@@ -13,9 +13,13 @@
     name="theme-color"
     content="#172B4D">
 
-  <title>ONE49 Security Portal</title>
+  <title>
+    ONE49 Security Portal
+  </title>
 
-  <script src="https://unpkg.com/html5-qrcode"></script>
+  <script
+    src="https://unpkg.com/html5-qrcode">
+  </script>
 
 
   <style>
@@ -27,235 +31,284 @@
 
     body {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: #f3f4f6;
-      color: #1f2937;
+
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+      background:
+        #f3f4f6;
+
+      color:
+        #1f2937;
     }
 
 
     .header {
-      background: #172B4D;
-      color: white;
-      text-align: center;
-      padding: 18px 15px;
+      background:
+        #172B4D;
+
+      color:
+        white;
+
+      text-align:
+        center;
+
+      padding:
+        18px 15px;
     }
 
 
     .header h1 {
-      margin: 0;
-      font-size: 22px;
+      margin:
+        0;
+
+      font-size:
+        22px;
     }
 
 
     .header p {
-      margin: 5px 0 0;
-      font-size: 13px;
-      opacity: .9;
+      margin:
+        5px 0 0;
+
+      font-size:
+        13px;
+
+      opacity:
+        0.9;
     }
 
 
     .version {
-      margin-top: 4px;
-      font-size: 11px;
-      opacity: .7;
+      margin-top:
+        5px;
+
+      font-size:
+        11px;
+
+      opacity:
+        0.65;
     }
 
 
     .container {
-      width: 100%;
-      max-width: 620px;
-      margin: auto;
-      padding: 16px;
+      width:
+        100%;
+
+      max-width:
+        620px;
+
+      margin:
+        auto;
+
+      padding:
+        16px;
     }
 
 
     .card {
-      background: white;
-      border-radius: 14px;
-      padding: 18px;
-      margin-bottom: 15px;
-      box-shadow: 0 2px 8px rgba(0,0,0,.08);
+      background:
+        white;
+
+      border-radius:
+        14px;
+
+      padding:
+        18px;
+
+      margin-bottom:
+        15px;
+
+      box-shadow:
+        0 2px 8px
+        rgba(
+          0,
+          0,
+          0,
+          0.08
+        );
     }
 
 
-    .section-title {
-      font-size: 17px;
-      font-weight: bold;
-      margin-bottom: 6px;
+    .title {
+      font-size:
+        17px;
+
+      font-weight:
+        bold;
+
+      margin-bottom:
+        6px;
     }
 
 
     .description {
-      font-size: 13px;
-      color: #6b7280;
-      line-height: 1.4;
-      margin-bottom: 15px;
+      color:
+        #6b7280;
+
+      font-size:
+        13px;
+
+      line-height:
+        1.4;
+
+      margin-bottom:
+        15px;
     }
 
 
     button {
-      width: 100%;
-      min-height: 52px;
-      border: 0;
-      border-radius: 10px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
+      width:
+        100%;
+
+      min-height:
+        52px;
+
+      border:
+        0;
+
+      border-radius:
+        10px;
+
+      font-size:
+        16px;
+
+      font-weight:
+        bold;
+
+      cursor:
+        pointer;
     }
 
 
     button:disabled {
-      opacity: .55;
-      cursor: not-allowed;
+      opacity:
+        0.55;
     }
 
 
     .primary {
-      background: #0F766E;
-      color: white;
+      background:
+        #0F766E;
+
+      color:
+        white;
     }
 
 
     .danger {
-      background: #991B1B;
-      color: white;
-      margin-top: 10px;
+      background:
+        #991B1B;
+
+      color:
+        white;
+
+      margin-top:
+        10px;
     }
 
 
     #reader {
-      width: 100%;
-      margin-top: 15px;
-      overflow: hidden;
-      border-radius: 12px;
-    }
+      width:
+        100%;
 
+      margin-top:
+        15px;
 
-    #reader video {
-      border-radius: 12px;
+      overflow:
+        hidden;
+
+      border-radius:
+        12px;
     }
 
 
     .hidden {
-      display: none !important;
+      display:
+        none !important;
     }
 
 
-    .status-box {
-      margin-top: 12px;
-      padding: 13px;
-      border-radius: 9px;
-      text-align: center;
-      font-size: 14px;
-      font-weight: bold;
-      background: #eaf2ff;
-      color: #172B4D;
+    .status {
+      margin-top:
+        12px;
+
+      padding:
+        13px;
+
+      border-radius:
+        9px;
+
+      text-align:
+        center;
+
+      font-size:
+        14px;
+
+      font-weight:
+        bold;
+
+      background:
+        #eaf2ff;
+
+      color:
+        #172B4D;
     }
 
 
     .success {
-      background: #dcfce7;
-      color: #166534;
+      background:
+        #dcfce7;
+
+      color:
+        #166534;
     }
 
 
     .error {
-      background: #fee2e2;
-      color: #991b1b;
-    }
+      background:
+        #fee2e2;
 
-
-    .warning {
-      background: #fef3c7;
-      color: #92400e;
-    }
-
-
-    .result-banner {
-      padding: 15px;
-      border-radius: 10px;
-      text-align: center;
-      font-size: 19px;
-      font-weight: bold;
-      margin-bottom: 15px;
-    }
-
-
-    .valid {
-      background: #dcfce7;
-      color: #166534;
-    }
-
-
-    .invalid {
-      background: #fee2e2;
-      color: #991b1b;
-    }
-
-
-    .warn {
-      background: #fef3c7;
-      color: #92400e;
-    }
-
-
-    .registration-id {
-      text-align: center;
-      color: #172B4D;
-      font-size: 24px;
-      font-weight: bold;
-      margin-bottom: 18px;
-    }
-
-
-    .row {
-      padding: 10px 0;
-      border-bottom: 1px solid #e5e7eb;
-    }
-
-
-    .label {
-      font-size: 11px;
-      color: #6b7280;
-      text-transform: uppercase;
-      margin-bottom: 4px;
-    }
-
-
-    .value {
-      font-size: 16px;
-      font-weight: bold;
-      word-break: break-word;
-    }
-
-
-    .entrance {
-      margin-top: 15px;
-      padding: 16px;
-      border-radius: 9px;
-      background: #eaf2ff;
-      color: #172B4D;
-      text-align: center;
-      font-size: 17px;
-      font-weight: bold;
+      color:
+        #991b1b;
     }
 
 
     .locked {
-      background: #f3f4f6;
-      color: #6b7280;
-      padding: 14px;
-      border-radius: 9px;
-      line-height: 1.5;
-      font-size: 13px;
+      padding:
+        14px;
+
+      background:
+        #f3f4f6;
+
+      color:
+        #6b7280;
+
+      border-radius:
+        9px;
+
+      font-size:
+        13px;
+
+      line-height:
+        1.5;
     }
 
 
     .footer {
-      text-align: center;
-      color: #9ca3af;
-      font-size: 11px;
-      margin: 15px 0 25px;
+      text-align:
+        center;
+
+      color:
+        #9ca3af;
+
+      font-size:
+        11px;
+
+      margin:
+        15px 0 25px;
     }
 
   </style>
@@ -277,7 +330,7 @@
     </p>
 
     <div class="version">
-      Live Security Portal V2.1
+      Live Scanner V2.2
     </div>
 
   </div>
@@ -288,13 +341,18 @@
 
     <div class="card">
 
-      <div class="section-title">
+      <div class="title">
+
         Live QR Scanner
+
       </div>
 
+
       <div class="description">
-        Scan the secure QR code from the ONE49
-        pre-registration confirmation email.
+
+        Scan the secure QR code from the
+        ONE49 pre-registration confirmation email.
+
       </div>
 
 
@@ -326,7 +384,7 @@
 
       <div
         id="status"
-        class="status-box hidden">
+        class="status hidden">
       </div>
 
     </div>
@@ -334,9 +392,10 @@
 
     <div class="card">
 
-      <div class="section-title">
+      <div class="title">
         Manual Search
       </div>
+
 
       <div class="locked">
 
@@ -344,25 +403,18 @@
 
         <br><br>
 
-        It will be enabled after Security Officer
-        authentication is added.
+        Security Officer Login / PIN will be
+        added after QR verification is completed.
 
       </div>
 
     </div>
 
 
-    <div
-      id="resultCard"
-      class="card hidden">
-
-      <div id="result"></div>
-
-    </div>
-
-
     <div class="footer">
+
       ONE49 Residence Security System
+
     </div>
 
 
@@ -373,20 +425,32 @@
 
 
 /**************************************************************
- * ONE49 SECURITY PORTAL FRONTEND V2.1
+ * ONE49 LIVE SCANNER V2.2
+ *
+ * QR SCAN
+ *   ↓
+ * POST FORM
+ *   ↓
+ * APPS SCRIPT VERIFICATION PAGE
+ *
+ * NO JSONP / NO CORS / NO FETCH
  **************************************************************/
 
-const ONE49_API_URL =
+
+const ONE49_BACKEND_URL =
   'https://script.google.com/macros/s/AKfycbxoTQgBFcrqzJ3Xoi6Tzb-EUGRaYRpgvSsexBfsA3X_8uIf3IA7qW7ed296l-VPuQFZ/exec';
 
 
-let scanner = null;
+let scanner =
+  null;
 
-let scannerActive = false;
 
-let processing = false;
+let scannerActive =
+  false;
 
-let callbackCounter = 0;
+
+let processing =
+  false;
 
 
 /**************************************************************
@@ -417,26 +481,15 @@ const statusBox =
   );
 
 
-const resultCard =
-  document.getElementById(
-    'resultCard'
-  );
-
-
-const result =
-  document.getElementById(
-    'result'
-  );
-
-
 /**************************************************************
  * START SCANNER
  **************************************************************/
 
-startButton.addEventListener(
-  'click',
-  startScanner
-);
+startButton
+  .addEventListener(
+    'click',
+    startScanner
+  );
 
 
 async function startScanner() {
@@ -451,13 +504,14 @@ async function startScanner() {
 
 
   if (
-    !apiConfigured()
+    !backendConfigured()
   ) {
 
     showStatus(
       'Backend URL has not been configured.',
       'error'
     );
+
 
     return;
 
@@ -466,13 +520,6 @@ async function startScanner() {
 
   processing =
     false;
-
-
-  resultCard
-    .classList
-    .add(
-      'hidden'
-    );
 
 
   startButton.disabled =
@@ -540,9 +587,15 @@ async function startScanner() {
 
 
           return (
-            label.includes('back') ||
-            label.includes('rear') ||
-            label.includes('environment')
+            label.includes(
+              'back'
+            ) ||
+            label.includes(
+              'rear'
+            ) ||
+            label.includes(
+              'environment'
+            )
           );
 
         }
@@ -574,10 +627,13 @@ async function startScanner() {
 
             const size =
               Math.floor(
+
                 Math.min(
                   width,
                   height
-                ) * .72
+                ) *
+                0.72
+
               );
 
 
@@ -642,12 +698,17 @@ async function startScanner() {
 
 
     showStatus(
+
       'Camera error: ' +
       (
-        error.message ||
-        String(error)
+        error &&
+        error.message
+          ? error.message
+          : String(error)
       ),
+
       'error'
+
     );
 
   }
@@ -696,10 +757,6 @@ async function qrSuccess(
     ).trim();
 
 
-  /************************************************************
-   * PARSE LOCALLY
-   ************************************************************/
-
   const parts =
     qr.split('|');
 
@@ -708,25 +765,35 @@ async function qrSuccess(
     parts.length !== 3
   ) {
 
-    failQr(
-      'Invalid ONE49 QR Code.'
+    showStatus(
+      'Invalid ONE49 QR Code.',
+      'error'
     );
+
 
     return;
 
   }
 
 
-  if (
-    String(parts[0])
+  const prefix =
+    String(
+      parts[0] || ''
+    )
       .trim()
-      .toUpperCase() !==
-      'ONE49'
+      .toUpperCase();
+
+
+  if (
+    prefix !==
+    'ONE49'
   ) {
 
-    failQr(
-      'Invalid ONE49 QR Code.'
+    showStatus(
+      'This is not an ONE49 QR Code.',
+      'error'
     );
+
 
     return;
 
@@ -750,9 +817,11 @@ async function qrSuccess(
     !token
   ) {
 
-    failQr(
-      'Invalid ONE49 QR Code.'
+    showStatus(
+      'Invalid ONE49 QR Code.',
+      'error'
     );
+
 
     return;
 
@@ -760,12 +829,12 @@ async function qrSuccess(
 
 
   showStatus(
-    'QR detected — verifying with ONE49 database...',
-    ''
+    'QR detected — verifying registration...',
+    'success'
   );
 
 
-  verifyRegistration(
+  submitVerification(
     registrationId,
     token
   );
@@ -774,13 +843,121 @@ async function qrSuccess(
 
 
 /**************************************************************
+ * POST TO APPS SCRIPT
+ **************************************************************/
+
+function submitVerification(
+  registrationId,
+  token
+) {
+
+  const form =
+    document.createElement(
+      'form'
+    );
+
+
+  form.method =
+    'POST';
+
+
+  form.action =
+    ONE49_BACKEND_URL;
+
+
+  form.style.display =
+    'none';
+
+
+  const ridInput =
+    document.createElement(
+      'input'
+    );
+
+
+  ridInput.type =
+    'hidden';
+
+
+  ridInput.name =
+    'rid';
+
+
+  ridInput.value =
+    registrationId;
+
+
+  form.appendChild(
+    ridInput
+  );
+
+
+  const tokenInput =
+    document.createElement(
+      'input'
+    );
+
+
+  tokenInput.type =
+    'hidden';
+
+
+  tokenInput.name =
+    'token';
+
+
+  tokenInput.value =
+    token;
+
+
+  form.appendChild(
+    tokenInput
+  );
+
+
+  const sourceInput =
+    document.createElement(
+      'input'
+    );
+
+
+  sourceInput.type =
+    'hidden';
+
+
+  sourceInput.name =
+    'source';
+
+
+  sourceInput.value =
+    'ONE49_LIVE_SCANNER_V22';
+
+
+  form.appendChild(
+    sourceInput
+  );
+
+
+  document.body
+    .appendChild(
+      form
+    );
+
+
+  form.submit();
+
+}
+
+
+/**************************************************************
  * STOP SCANNER
  **************************************************************/
 
-stopButton.addEventListener(
-  'click',
-  stopScanner
-);
+stopButton
+  .addEventListener(
+    'click',
+    stopScanner
+  );
 
 
 async function stopScanner() {
@@ -839,557 +1016,52 @@ async function stopScanner() {
 
 
 /**************************************************************
- * VERIFY USING SEPARATE PARAMETERS
+ * NORMALIZE
  **************************************************************/
 
-function verifyRegistration(
-  registrationId,
-  token
-) {
-
-  callbackCounter++;
-
-
-  const callback =
-    'one49Verify_' +
-    Date.now() +
-    '_' +
-    callbackCounter;
-
-
-  const script =
-    document.createElement(
-      'script'
-    );
-
-
-  let complete =
-    false;
-
-
-  const timer =
-    setTimeout(
-      function() {
-
-        if (
-          complete
-        ) {
-
-          return;
-
-        }
-
-
-        complete =
-          true;
-
-
-        cleanup();
-
-
-        showStatus(
-          'ONE49 database connection timed out.',
-          'error'
-        );
-
-
-        showInvalid(
-          'Unable to verify registration.'
-        );
-
-      },
-      15000
-    );
-
-
-  function cleanup() {
-
-    clearTimeout(
-      timer
-    );
-
-
-    try {
-
-      delete window[
-        callback
-      ];
-
-    }
-
-    catch (error) {}
-
-
-    if (
-      script.parentNode
-    ) {
-
-      script
-        .parentNode
-        .removeChild(
-          script
-        );
-
-    }
-
-  }
-
-
-  window[
-    callback
-  ] =
-    function(data) {
-
-      if (
-        complete
-      ) {
-
-        return;
-
-      }
-
-
-      complete =
-        true;
-
-
-      cleanup();
-
-
-      handleApiResult(
-        data
-      );
-
-    };
-
-
-  script.onerror =
-    function() {
-
-      if (
-        complete
-      ) {
-
-        return;
-
-      }
-
-
-      complete =
-        true;
-
-
-      cleanup();
-
-
-      showStatus(
-        'Unable to connect to ONE49 backend.',
-        'error'
-      );
-
-
-      showInvalid(
-        'Backend connection failed.'
-      );
-
-    };
-
-
-  const apiUrl =
-    ONE49_API_URL +
-
-    '?action=verify' +
-
-    '&rid=' +
-    encodeURIComponent(
-      registrationId
-    ) +
-
-    '&token=' +
-    encodeURIComponent(
-      token
-    ) +
-
-    '&callback=' +
-    encodeURIComponent(
-      callback
-    ) +
-
-    '&cache=' +
-    Date.now();
-
-
-  script.src =
-    apiUrl;
-
-
-  document.body
-    .appendChild(
-      script
-    );
-
-}
-
-
-/**************************************************************
- * HANDLE API RESULT
- **************************************************************/
-
-function handleApiResult(
-  data
-) {
-
-  if (
-    !data ||
-    data.success !== true ||
-    data.valid !== true
-  ) {
-
-    const message =
-      data &&
-      data.message
-        ? data.message
-        : 'QR verification failed.';
-
-
-    showStatus(
-      message,
-      'error'
-    );
-
-
-    showInvalid(
-      message,
-      data
-        ? data.registrationId
-        : ''
-    );
-
-
-    return;
-
-  }
-
-
-  showStatus(
-    'ONE49 QR verified successfully.',
-    'success'
-  );
-
-
-  showRegistration(
-    data
-  );
-
-}
-
-
-/**************************************************************
- * VALID DISPLAY
- **************************************************************/
-
-function showRegistration(
-  data
-) {
-
-  resultCard
-    .classList
-    .remove(
-      'hidden'
-    );
-
-
-  let bannerClass =
-    data.entryAllowed
-      ? 'valid'
-      : 'invalid';
-
-
-  let bannerText =
-    data.entryAllowed
-      ? '✓ REGISTRATION VALID'
-      : '✕ ENTRY NOT PERMITTED';
-
-
-  if (
-    data.status ===
-    'CHECKED-IN'
-  ) {
-
-    bannerClass =
-      'warn';
-
-
-    bannerText =
-      '⚠ ALREADY CHECKED IN';
-
-  }
-
-
-  let serviceFields =
-    '';
-
-
-  if (
-    data.registrationType ===
-    'SERVICE / LOADING'
-  ) {
-
-    serviceFields =
-
-      field(
-        'Company / Service Provider',
-        data.company
-      ) +
-
-      field(
-        'Work Permit / Approval',
-        data.workPermit
-      ) +
-
-      field(
-        'Description of Work / Delivery',
-        data.description
-      );
-
-  }
-
-
-  let warning =
-    '';
-
-
-  if (
-    data.warning
-  ) {
-
-    warning = `
-
-      <div class="status-box warning">
-
-        ${escapeHtml(
-          data.warning
-        )}
-
-      </div>
-
-    `;
-
-  }
-
-
-  result.innerHTML = `
-
-    <div
-      class="result-banner ${bannerClass}">
-
-      ${bannerText}
-
-    </div>
-
-
-    <div class="registration-id">
-
-      ${escapeHtml(
-        data.registrationId
-      )}
-
-    </div>
-
-
-    ${field(
-      'Registration Type',
-      data.registrationType
-    )}
-
-
-    ${field(
-      'Status',
-      data.status
-    )}
-
-
-    ${field(
-      'Resident Verification',
-      data.residentVerification
-    )}
-
-
-    ${field(
-      'Resident Unit',
-      'Tower ' +
-      data.tower +
-      ' / ' +
-      data.unit
-    )}
-
-
-    ${field(
-      data.registrationType ===
-      'SERVICE / LOADING'
-        ? 'Driver / Person in Charge'
-        : 'Visitor',
-      data.personName
-    )}
-
-
-    ${serviceFields}
-
-
-    ${field(
-      'Purpose',
-      data.purpose
-    )}
-
-
-    ${field(
-      'Visit / Service Date',
-      data.visitDate
-    )}
-
-
-    ${field(
-      'Expected Arrival',
-      data.arrival
-    )}
-
-
-    ${field(
-      'Entry / Vehicle Type',
-      data.vehicleType
-    )}
-
-
-    ${field(
-      'Vehicle Registration',
-      data.vehicle
-    )}
-
-
-    <div class="entrance">
-
-      ${escapeHtml(
-        data.entrance
-      )}
-
-    </div>
-
-
-    ${warning}
-
-  `;
-
-
-  resultCard
-    .scrollIntoView({
-
-      behavior:
-        'smooth',
-
-      block:
-        'start'
-
-    });
-
-}
-
-
-/**************************************************************
- * INVALID DISPLAY
- **************************************************************/
-
-function failQr(
-  message
-) {
-
-  showStatus(
-    message,
-    'error'
-  );
-
-
-  showInvalid(
-    message
-  );
-
-}
-
-
-function showInvalid(
-  message,
-  registrationId
-) {
-
-  resultCard
-    .classList
-    .remove(
-      'hidden'
-    );
-
-
-  result.innerHTML = `
-
-    <div
-      class="result-banner invalid">
-
-      ✕ QR NOT VALID
-
-    </div>
-
-
-    ${
-      registrationId
-        ? `
-          <div class="registration-id">
-            ${escapeHtml(
-              registrationId
-            )}
-          </div>
-        `
-        : ''
-    }
-
-
-    <div
-      class="status-box error">
-
-      ${escapeHtml(
-        message
-      )}
-
-    </div>
-
-  `;
-
-}
-
-
-/**************************************************************
- * FIELD
- **************************************************************/
-
-function field(
-  label,
+function normalizeSecure(
   value
 ) {
 
-  return `
+  return String(
+    value || ''
+  )
+    .trim()
+    .toUpperCase()
+    .replace(
+      /[^A-Z0-9]/g,
+      ''
+    );
 
-    <div class="row">
+}
 
-      <div class="label">
-        ${escapeHtml(label)}
-      </div>
 
-      <div class="value">
-        ${escapeHtml(
-          value || '-'
-        )}
-      </div>
+/**************************************************************
+ * BACKEND URL
+ **************************************************************/
 
-    </div>
+function backendConfigured() {
 
-  `;
+  return (
+
+    ONE49_BACKEND_URL &&
+
+    ONE49_BACKEND_URL
+      .startsWith(
+        'https://script.google.com/macros/s/'
+      ) &&
+
+    ONE49_BACKEND_URL
+      .endsWith(
+        '/exec'
+      ) &&
+
+    !ONE49_BACKEND_URL
+      .includes(
+        'PASTE_YOUR'
+      )
+
+  );
 
 }
 
@@ -1404,7 +1076,7 @@ function showStatus(
 ) {
 
   statusBox.className =
-    'status-box';
+    'status';
 
 
   if (
@@ -1435,20 +1107,6 @@ function showStatus(
   }
 
 
-  if (
-    type ===
-    'warning'
-  ) {
-
-    statusBox
-      .classList
-      .add(
-        'warning'
-      );
-
-  }
-
-
   statusBox.textContent =
     message;
 
@@ -1461,86 +1119,6 @@ function showStatus(
 
 }
 
-
-/**************************************************************
- * NORMALIZE
- **************************************************************/
-
-function normalizeSecure(
-  value
-) {
-
-  return String(
-    value || ''
-  )
-    .trim()
-    .toUpperCase()
-    .replace(
-      /[^A-Z0-9]/g,
-      ''
-    );
-
-}
-
-
-/**************************************************************
- * API CONFIGURED
- **************************************************************/
-
-function apiConfigured() {
-
-  return (
-    ONE49_API_URL &&
-    ONE49_API_URL
-      .startsWith(
-        'https://script.google.com/macros/s/'
-      ) &&
-    ONE49_API_URL
-      .endsWith(
-        '/exec'
-      ) &&
-    !ONE49_API_URL
-      .includes(
-        'PASTE_YOUR'
-      )
-  );
-
-}
-
-
-/**************************************************************
- * ESCAPE HTML
- **************************************************************/
-
-function escapeHtml(
-  value
-) {
-
-  return String(
-    value || ''
-  )
-    .replace(
-      /&/g,
-      '&amp;'
-    )
-    .replace(
-      /</g,
-      '&lt;'
-    )
-    .replace(
-      />/g,
-      '&gt;'
-    )
-    .replace(
-      /"/g,
-      '&quot;'
-    )
-    .replace(
-      /'/g,
-      '&#039;'
-    );
-
-}
 
 </script>
 
