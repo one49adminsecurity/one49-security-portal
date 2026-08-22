@@ -3,315 +3,187 @@
 
 <head>
 
-  <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-
-  <meta
-    name="theme-color"
-    content="#172B4D">
-
-  <title>
-    ONE49 Security Portal
-  </title>
-
-  <script
-    src="https://unpkg.com/html5-qrcode">
-  </script>
-
-
-  <style>
-
-    * {
-      box-sizing: border-box;
-    }
-
-
-    body {
-      margin: 0;
-
-      font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-
-      background:
-        #f3f4f6;
-
-      color:
-        #1f2937;
-    }
-
-
-    .header {
-      background:
-        #172B4D;
-
-      color:
-        white;
-
-      text-align:
-        center;
-
-      padding:
-        18px 15px;
-    }
-
-
-    .header h1 {
-      margin:
-        0;
-
-      font-size:
-        22px;
-    }
-
-
-    .header p {
-      margin:
-        5px 0 0;
-
-      font-size:
-        13px;
-
-      opacity:
-        0.9;
-    }
-
-
-    .version {
-      margin-top:
-        5px;
-
-      font-size:
-        11px;
-
-      opacity:
-        0.65;
-    }
-
-
-    .container {
-      width:
-        100%;
-
-      max-width:
-        620px;
-
-      margin:
-        auto;
-
-      padding:
-        16px;
-    }
-
-
-    .card {
-      background:
-        white;
-
-      border-radius:
-        14px;
-
-      padding:
-        18px;
-
-      margin-bottom:
-        15px;
-
-      box-shadow:
-        0 2px 8px
-        rgba(
-          0,
-          0,
-          0,
-          0.08
-        );
-    }
-
-
-    .title {
-      font-size:
-        17px;
-
-      font-weight:
-        bold;
-
-      margin-bottom:
-        6px;
-    }
-
-
-    .description {
-      color:
-        #6b7280;
-
-      font-size:
-        13px;
-
-      line-height:
-        1.4;
-
-      margin-bottom:
-        15px;
-    }
-
-
-    button {
-      width:
-        100%;
-
-      min-height:
-        52px;
-
-      border:
-        0;
-
-      border-radius:
-        10px;
-
-      font-size:
-        16px;
-
-      font-weight:
-        bold;
-
-      cursor:
-        pointer;
-    }
-
-
-    button:disabled {
-      opacity:
-        0.55;
-    }
-
-
-    .primary {
-      background:
-        #0F766E;
-
-      color:
-        white;
-    }
-
-
-    .danger {
-      background:
-        #991B1B;
-
-      color:
-        white;
-
-      margin-top:
-        10px;
-    }
-
-
-    #reader {
-      width:
-        100%;
-
-      margin-top:
-        15px;
-
-      overflow:
-        hidden;
-
-      border-radius:
-        12px;
-    }
-
-
-    .hidden {
-      display:
-        none !important;
-    }
-
-
-    .status {
-      margin-top:
-        12px;
-
-      padding:
-        13px;
-
-      border-radius:
-        9px;
-
-      text-align:
-        center;
-
-      font-size:
-        14px;
-
-      font-weight:
-        bold;
-
-      background:
-        #eaf2ff;
-
-      color:
-        #172B4D;
-    }
-
-
-    .success {
-      background:
-        #dcfce7;
-
-      color:
-        #166534;
-    }
-
-
-    .error {
-      background:
-        #fee2e2;
-
-      color:
-        #991b1b;
-    }
-
-
-    .locked {
-      padding:
-        14px;
-
-      background:
-        #f3f4f6;
-
-      color:
-        #6b7280;
-
-      border-radius:
-        9px;
-
-      font-size:
-        13px;
-
-      line-height:
-        1.5;
-    }
-
-
-    .footer {
-      text-align:
-        center;
-
-      color:
-        #9ca3af;
-
-      font-size:
-        11px;
-
-      margin:
-        15px 0 25px;
-    }
-
-  </style>
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+<meta
+  name="theme-color"
+  content="#172B4D">
+
+<title>
+ONE49 Security Portal
+</title>
+
+<script src="https://unpkg.com/html5-qrcode"></script>
+
+
+<style>
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f3f4f6;
+  color: #1f2937;
+}
+
+.header {
+  background: #172B4D;
+  color: white;
+  text-align: center;
+  padding: 19px 15px;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.header p {
+  margin: 5px 0 0;
+  font-size: 13px;
+  opacity: .9;
+}
+
+.version {
+  margin-top: 5px;
+  font-size: 11px;
+  opacity: .65;
+}
+
+.container {
+  width: 100%;
+  max-width: 620px;
+  margin: auto;
+  padding: 16px;
+}
+
+.card {
+  background: white;
+  border-radius: 14px;
+  padding: 18px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.08);
+}
+
+.title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.description {
+  color: #6b7280;
+  font-size: 13px;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+input,
+select {
+  width: 100%;
+  height: 50px;
+  border: 1px solid #d1d5db;
+  border-radius: 9px;
+  padding: 0 13px;
+  font-size: 16px;
+  margin-bottom: 15px;
+  background: white;
+}
+
+button {
+  width: 100%;
+  min-height: 52px;
+  border: 0;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.primary {
+  background: #0F766E;
+  color: white;
+}
+
+.danger {
+  background: #991B1B;
+  color: white;
+  margin-top: 10px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+#reader {
+  width: 100%;
+  margin-top: 15px;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.status {
+  margin-top: 12px;
+  padding: 13px;
+  border-radius: 9px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  background: #eaf2ff;
+  color: #172B4D;
+}
+
+.success {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.error {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.officer {
+  background: #eaf2ff;
+  border-radius: 10px;
+  padding: 12px;
+  margin-bottom: 15px;
+  font-size: 13px;
+  color: #172B4D;
+  text-align: center;
+  font-weight: bold;
+}
+
+.logout {
+  display: block;
+  text-align: center;
+  margin-top: 14px;
+  color: #991b1b;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.footer {
+  text-align: center;
+  color: #9ca3af;
+  font-size: 11px;
+  margin: 15px 0 25px;
+}
+
+</style>
 
 </head>
 
@@ -319,123 +191,204 @@
 <body>
 
 
-  <div class="header">
+<div class="header">
 
-    <h1>
-      ONE49 Security Portal
-    </h1>
+  <h1>
+    ONE49 Security Portal
+  </h1>
 
-    <p>
-      Visitor & Service Access Verification
-    </p>
+  <p>
+    Visitor & Service Access Verification
+  </p>
 
-    <div class="version">
-      Live Scanner V2.2
-    </div>
-
+  <div class="version">
+    Security Portal V2.4
   </div>
 
-
-  <div class="container">
-
-
-    <div class="card">
-
-      <div class="title">
-
-        Live QR Scanner
-
-      </div>
+</div>
 
 
-      <div class="description">
+<div class="container">
 
-        Scan the secure QR code from the
-        ONE49 pre-registration confirmation email.
 
-      </div>
+  <!-- LOGIN -->
+
+  <div
+    id="loginCard"
+    class="card hidden">
+
+    <div class="title">
+      Security Officer Login
+    </div>
+
+    <div class="description">
+      Authorized security personnel only.
+    </div>
+
+
+    <form
+      id="loginForm"
+      method="POST">
+
+      <input
+        type="hidden"
+        name="action"
+        value="login">
+
+
+      <label>
+        Officer ID
+      </label>
+
+      <input
+        type="text"
+        name="officerId"
+        placeholder="SEC001"
+        autocomplete="username"
+        required>
+
+
+      <label>
+        PIN
+      </label>
+
+      <input
+        type="password"
+        name="pin"
+        inputmode="numeric"
+        pattern="[0-9]*"
+        maxlength="6"
+        placeholder="6-digit PIN"
+        autocomplete="current-password"
+        required>
+
+
+      <label>
+        Guard Post
+      </label>
+
+      <select
+        name="guardPost"
+        required>
+
+        <option value="">
+          Select Guard Post
+        </option>
+
+        <option value="LEVEL 4 — MAIN ENTRANCE">
+          Level 4 — Main Entrance
+        </option>
+
+        <option value="LEVEL 1 — SERVICE / LOADING">
+          Level 1 — Service / Loading
+        </option>
+
+      </select>
 
 
       <button
-        id="startButton"
         class="primary"
-        type="button">
+        type="submit">
 
-        📷 Start Live Scanner
-
-      </button>
-
-
-      <div
-        id="reader"
-        class="hidden">
-      </div>
-
-
-      <button
-        id="stopButton"
-        class="danger hidden"
-        type="button">
-
-        Stop Scanner
+        🔐 Login
 
       </button>
 
+    </form>
 
-      <div
-        id="status"
-        class="status hidden">
-      </div>
 
+    <div
+      id="loginError"
+      class="status error hidden">
     </div>
-
-
-    <div class="card">
-
-      <div class="title">
-        Manual Search
-      </div>
-
-
-      <div class="locked">
-
-        🔒 Manual Search is currently locked.
-
-        <br><br>
-
-        Security Officer Login / PIN will be
-        added after QR verification is completed.
-
-      </div>
-
-    </div>
-
-
-    <div class="footer">
-
-      ONE49 Residence Security System
-
-    </div>
-
 
   </div>
+
+
+  <!-- SCANNER -->
+
+  <div
+    id="scannerCard"
+    class="card hidden">
+
+    <div
+      class="officer">
+
+      ✓ Security Officer Authenticated
+
+    </div>
+
+
+    <div class="title">
+      Live QR Scanner
+    </div>
+
+
+    <div class="description">
+      Scan the visitor or service QR code.
+    </div>
+
+
+    <button
+      id="startButton"
+      class="primary"
+      type="button">
+
+      📷 Start Live Scanner
+
+    </button>
+
+
+    <div
+      id="reader"
+      class="hidden">
+    </div>
+
+
+    <button
+      id="stopButton"
+      class="danger hidden"
+      type="button">
+
+      Stop Scanner
+
+    </button>
+
+
+    <div
+      id="status"
+      class="status hidden">
+    </div>
+
+
+    <a
+      id="logoutButton"
+      class="logout"
+      href="#">
+
+      Log Out
+
+    </a>
+
+  </div>
+
+
+  <div class="footer">
+    ONE49 Residence Security System
+  </div>
+
+
+</div>
 
 
 <script>
 
 
 /**************************************************************
- * ONE49 LIVE SCANNER V2.2
+ * IMPORTANT
  *
- * QR SCAN
- *   ↓
- * POST FORM
- *   ↓
- * APPS SCRIPT VERIFICATION PAGE
- *
- * NO JSONP / NO CORS / NO FETCH
+ * Paste the SAME Apps Script /exec URL currently working.
  **************************************************************/
-
 
 const ONE49_BACKEND_URL =
   'https://script.google.com/macros/s/AKfycbxoTQgBFcrqzJ3Xoi6Tzb-EUGRaYRpgvSsexBfsA3X_8uIf3IA7qW7ed296l-VPuQFZ/exec';
@@ -454,8 +407,54 @@ let processing =
 
 
 /**************************************************************
+ * URL
+ **************************************************************/
+
+const params =
+  new URLSearchParams(
+    window.location.search
+  );
+
+
+const session =
+  String(
+    params.get('session') || ''
+  ).trim();
+
+
+const loginError =
+  String(
+    params.get('loginError') || ''
+  ).trim();
+
+
+/**************************************************************
  * ELEMENTS
  **************************************************************/
+
+const loginCard =
+  document.getElementById(
+    'loginCard'
+  );
+
+
+const scannerCard =
+  document.getElementById(
+    'scannerCard'
+  );
+
+
+const loginForm =
+  document.getElementById(
+    'loginForm'
+  );
+
+
+const loginErrorBox =
+  document.getElementById(
+    'loginError'
+  );
+
 
 const startButton =
   document.getElementById(
@@ -481,6 +480,68 @@ const statusBox =
   );
 
 
+const logoutButton =
+  document.getElementById(
+    'logoutButton'
+  );
+
+
+/**************************************************************
+ * INITIALIZE
+ **************************************************************/
+
+loginForm.action =
+  ONE49_BACKEND_URL;
+
+
+if (
+  session
+) {
+
+  scannerCard
+    .classList
+    .remove(
+      'hidden'
+    );
+
+
+  logoutButton.href =
+    ONE49_BACKEND_URL +
+    '?action=logout&session=' +
+    encodeURIComponent(
+      session
+    );
+
+}
+
+else {
+
+  loginCard
+    .classList
+    .remove(
+      'hidden'
+    );
+
+}
+
+
+if (
+  loginError
+) {
+
+  loginErrorBox.textContent =
+    loginError;
+
+
+  loginErrorBox
+    .classList
+    .remove(
+      'hidden'
+    );
+
+}
+
+
 /**************************************************************
  * START SCANNER
  **************************************************************/
@@ -497,21 +558,6 @@ async function startScanner() {
   if (
     scannerActive
   ) {
-
-    return;
-
-  }
-
-
-  if (
-    !backendConfigured()
-  ) {
-
-    showStatus(
-      'Backend URL has not been configured.',
-      'error'
-    );
-
 
     return;
 
@@ -587,15 +633,9 @@ async function startScanner() {
 
 
           return (
-            label.includes(
-              'back'
-            ) ||
-            label.includes(
-              'rear'
-            ) ||
-            label.includes(
-              'environment'
-            )
+            label.includes('back') ||
+            label.includes('rear') ||
+            label.includes('environment')
           );
 
         }
@@ -627,13 +667,11 @@ async function startScanner() {
 
             const size =
               Math.floor(
-
                 Math.min(
                   width,
                   height
                 ) *
-                0.72
-
+                .72
               );
 
 
@@ -698,17 +736,12 @@ async function startScanner() {
 
 
     showStatus(
-
       'Camera error: ' +
       (
-        error &&
-        error.message
-          ? error.message
-          : String(error)
+        error.message ||
+        String(error)
       ),
-
       'error'
-
     );
 
   }
@@ -762,8 +795,18 @@ async function qrSuccess(
 
 
   if (
-    parts.length !== 3
+    parts.length !== 3 ||
+    String(
+      parts[0]
+    )
+      .trim()
+      .toUpperCase() !==
+      'ONE49'
   ) {
+
+    processing =
+      false;
+
 
     showStatus(
       'Invalid ONE49 QR Code.',
@@ -776,31 +819,7 @@ async function qrSuccess(
   }
 
 
-  const prefix =
-    String(
-      parts[0] || ''
-    )
-      .trim()
-      .toUpperCase();
-
-
-  if (
-    prefix !==
-    'ONE49'
-  ) {
-
-    showStatus(
-      'This is not an ONE49 QR Code.',
-      'error'
-    );
-
-
-    return;
-
-  }
-
-
-  const registrationId =
+  const rid =
     normalizeSecure(
       parts[1]
     );
@@ -813,9 +832,13 @@ async function qrSuccess(
 
 
   if (
-    !registrationId ||
+    !rid ||
     !token
   ) {
+
+    processing =
+      false;
+
 
     showStatus(
       'Invalid ONE49 QR Code.',
@@ -828,14 +851,8 @@ async function qrSuccess(
   }
 
 
-  showStatus(
-    'QR detected — verifying registration...',
-    'success'
-  );
-
-
   submitVerification(
-    registrationId,
+    rid,
     token
   );
 
@@ -843,11 +860,11 @@ async function qrSuccess(
 
 
 /**************************************************************
- * POST TO APPS SCRIPT
+ * SUBMIT VERIFICATION
  **************************************************************/
 
 function submitVerification(
-  registrationId,
+  rid,
   token
 ) {
 
@@ -869,72 +886,31 @@ function submitVerification(
     'none';
 
 
-  const ridInput =
-    document.createElement(
-      'input'
-    );
-
-
-  ridInput.type =
-    'hidden';
-
-
-  ridInput.name =
-    'rid';
-
-
-  ridInput.value =
-    registrationId;
-
-
-  form.appendChild(
-    ridInput
+  addHidden(
+    form,
+    'action',
+    'verify'
   );
 
 
-  const tokenInput =
-    document.createElement(
-      'input'
-    );
-
-
-  tokenInput.type =
-    'hidden';
-
-
-  tokenInput.name =
-    'token';
-
-
-  tokenInput.value =
-    token;
-
-
-  form.appendChild(
-    tokenInput
+  addHidden(
+    form,
+    'session',
+    session
   );
 
 
-  const sourceInput =
-    document.createElement(
-      'input'
-    );
+  addHidden(
+    form,
+    'rid',
+    rid
+  );
 
 
-  sourceInput.type =
-    'hidden';
-
-
-  sourceInput.name =
-    'source';
-
-
-  sourceInput.value =
-    'ONE49_LIVE_SCANNER_V22';
-
-
-  form.appendChild(
-    sourceInput
+  addHidden(
+    form,
+    'token',
+    token
   );
 
 
@@ -950,7 +926,42 @@ function submitVerification(
 
 
 /**************************************************************
- * STOP SCANNER
+ * HIDDEN INPUT
+ **************************************************************/
+
+function addHidden(
+  form,
+  name,
+  value
+) {
+
+  const input =
+    document.createElement(
+      'input'
+    );
+
+
+  input.type =
+    'hidden';
+
+
+  input.name =
+    name;
+
+
+  input.value =
+    value;
+
+
+  form.appendChild(
+    input
+  );
+
+}
+
+
+/**************************************************************
+ * STOP
  **************************************************************/
 
 stopButton
@@ -1032,36 +1043,6 @@ function normalizeSecure(
       /[^A-Z0-9]/g,
       ''
     );
-
-}
-
-
-/**************************************************************
- * BACKEND URL
- **************************************************************/
-
-function backendConfigured() {
-
-  return (
-
-    ONE49_BACKEND_URL &&
-
-    ONE49_BACKEND_URL
-      .startsWith(
-        'https://script.google.com/macros/s/'
-      ) &&
-
-    ONE49_BACKEND_URL
-      .endsWith(
-        '/exec'
-      ) &&
-
-    !ONE49_BACKEND_URL
-      .includes(
-        'PASTE_YOUR'
-      )
-
-  );
 
 }
 
