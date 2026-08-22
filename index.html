@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <meta
+    name="theme-color"
+    content="#172B4D">
+
+  <title>ONE49 Security Portal</title>
+
+  <script src="https://unpkg.com/html5-qrcode"></script>
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f3f4f6;
+      color: #1f2937;
+    }
+
+    .header {
+      background: #172B4D;
+      color: white;
+      text-align: center;
+      padding: 18px 15px;
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: 22px;
+    }
+
+    .header p {
+      margin: 5px 0 0;
+      font-size: 13px;
+      opacity: 0.9;
+    }
+
+    .version {
+      margin-top: 5px;
+      font-size: 11px;
+      opacity: 0.65;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 620px;
+      margin: auto;
+      padding: 16px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 14px;
+      padding: 18px;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .scan-title {
+      font-size: 17px;
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+
+    .scan-description {
+      font-size: 13px;
+      color: #6b7280;
+      margin-bottom: 15px;
+      line-height: 1.4;
+    }
+
+    button {
+      width: 100%;
+      min-height: 52px;
+      border: 0;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .primary {
+      background: #0F766E;
+      color: white;
+    }
+
+    .secondary {
+      background: #172B4D;
+      color: white;
+      margin-top: 10px;
+    }
+
+    .danger {
+      background: #991B1B;
+      color: white;
+      margin-top: 10px;
+    }
+
+    #reader {
+      width: 100%;
+      margin-top: 15px;
+      overflow: hidden;
+      border-radius: 12px;
+    }
+
+    #reader video {
+      border-radius: 12px;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .scanner-status {
+      margin-top: 12px;
+      padding: 12px;
+      border-radius: 9px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: bold;
+      background: #eaf2ff;
+      color: #172B4D;
+    }
+
+    .success {
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    .error {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+    .qr-result {
+      margin-top: 15px;
+    }
+
+    .result-title {
+      text-align: center;
+      font-size: 20px;
+      font-weight: bold;
+      color: #166534;
+      margin-bottom: 15px;
+    }
+
+    .row {
+      padding: 10px 0;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .label {
+      font-size: 11px;
+      color: #6b7280;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .value {
+      font-size: 15px;
+      font-weight: bold;
+      word-break: break-all;
+    }
+
+    input {
+      width: 100%;
+      min-height: 50px;
+      padding: 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 9px;
+      font-size: 16px;
+      outline: none;
+      text-transform: uppercase;
+    }
+
+    input:focus {
+      border-color: #172B4D;
+    }
+
+    .footer-note {
+      text-align: center;
+      font-size: 11px;
+      color: #9ca3af;
+      margin-top: 15px;
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <div class="header">
+
+    <h1>ONE49 Security Portal</h1>
+
+    <p>Visitor & Service Access Verification</p>
+
+    <div class="version">
+      Live Scanner V2.0
+    </div>
+
+  </div>
+
+
+  <div class="container">
+
+
+    <div class="card">
+
+      <div class="scan-title">
+        Live QR Scanner
+      </div>
+
+      <div class="scan-description">
+        Point the security phone camera at the QR code from the
+        ONE49 pre-registration confirmation email.
+      </div>
+
+
+      <button
+        id="startButton"
+        class="primary"
+        type="button">
+
+        📷 Start Live Scanner
+
+      </button>
+
+
+      <div
+        id="reader"
+        class="hidden">
+      </div>
+
+
+      <button
+        id="stopButton"
+        class="danger hidden"
+        type="button">
+
+        Stop Scanner
+
+      </button>
+
+
+      <div
+        id="scannerStatus"
+        class="scanner-status hidden">
+      </div>
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="scan-title">
+        Manual Search
+      </div>
+
+      <div class="scan-description">
+        Backup option for Registration ID or vehicle registration number.
+      </div>
+
+
+      <input
+        id="manualInput"
+        type="text"
+        placeholder="REGISTRATION ID / VEHICLE PLATE">
+
+
+      <button
+        id="manualButton"
+        class="secondary"
+        type="button">
+
+        Search Registration
+
+      </button>
+
+    </div>
+
+
+    <div
+      id="resultCard"
+      class="card hidden">
+
+      <div
+        id="resultContent">
+      </div>
+
+    </div>
+
+
+    <div class="footer-note">
+      ONE49 Residence Security System
+    </div>
+
+  </div>
+
+
+<script>
+
+  let scanner = null;
+  let scannerActive = false;
+  let processingScan = false;
+
+
+  const startButton =
+    document.getElementById(
+      'startButton'
+    );
+
+  const stopButton =
+    document.getElementById(
+      'stopButton'
+    );
+
+  const reader =
+    document.getElementById(
+      'reader'
+    );
+
+  const scannerStatus =
+    document.getElementById(
+      'scannerStatus'
+    );
+
+  const resultCard =
+    document.getElementById(
+      'resultCard'
+    );
+
+  const resultContent =
+    document.getElementById(
+      'resultContent'
+    );
+
+
+  /************************************************************
+   * START LIVE SCANNER
+   ************************************************************/
+
+  startButton.addEventListener(
+    'click',
+    startScanner
+  );
+
+
+  async function startScanner() {
+
+    if (scannerActive) {
+      return;
+    }
+
+
+    processingScan = false;
+
+
+    resultCard.classList.add(
+      'hidden'
+    );
+
+
+    showStatus(
+      'Starting camera...',
+      ''
+    );
+
+
+    reader.classList.remove(
+      'hidden'
+    );
+
+
+    stopButton.classList.remove(
+      'hidden'
+    );
+
+
+    startButton.disabled =
+      true;
+
+
+    try {
+
+      scanner =
+        new Html5Qrcode(
+          'reader'
+        );
+
+
+      const cameras =
+        await Html5Qrcode.getCameras();
+
+
+      if (
+        !cameras ||
+        cameras.length === 0
+      ) {
+
+        throw new Error(
+          'No camera was found on this device.'
+        );
+
+      }
+
+
+      let cameraId =
+        cameras[0].id;
+
+
+      /********************************************************
+       * PREFER BACK / REAR CAMERA
+       ********************************************************/
+
+      const rearCamera =
+        cameras.find(
+          camera => {
+
+            const label =
+              String(
+                camera.label || ''
+              ).toLowerCase();
+
+
+            return (
+              label.includes('back') ||
+              label.includes('rear') ||
+              label.includes('environment')
+            );
+
+          }
+        );
+
+
+      if (rearCamera) {
+
+        cameraId =
+          rearCamera.id;
+
+      }
+
+
+      await scanner.start(
+
+        cameraId,
+
+        {
+          fps: 12,
+
+          qrbox: function(
+            viewfinderWidth,
+            viewfinderHeight
+          ) {
+
+            const minEdge =
+              Math.min(
+                viewfinderWidth,
+                viewfinderHeight
+              );
+
+
+            const size =
+              Math.floor(
+                minEdge * 0.72
+              );
+
+
+            return {
+              width: size,
+              height: size
+            };
+
+          },
+
+          aspectRatio: 1.0
+        },
+
+        onQrSuccess,
+
+        function() {
+          // Ignore normal scanning frames.
+        }
+
+      );
+
+
+      scannerActive =
+        true;
+
+
+      showStatus(
+        'Camera ready — point at ONE49 QR code.',
+        'success'
+      );
+
+    }
+
+    catch (error) {
+
+      scannerActive =
+        false;
+
+
+      scanner =
+        null;
+
+
+      reader.classList.add(
+        'hidden'
+      );
+
+
+      stopButton.classList.add(
+        'hidden'
+      );
+
+
+      startButton.disabled =
+        false;
+
+
+      showStatus(
+        'Camera could not be started: ' +
+        (
+          error &&
+          error.message
+            ? error.message
+            : String(error)
+        ),
+        'error'
+      );
+
+    }
+
+  }
+
+
+  /************************************************************
+   * QR SUCCESS
+   ************************************************************/
+
+  async function onQrSuccess(
+    decodedText
+  ) {
+
+    if (processingScan) {
+      return;
+    }
+
+
+    processingScan =
+      true;
+
+
+    if (
+      navigator.vibrate
+    ) {
+
+      navigator.vibrate(
+        120
+      );
+
+    }
+
+
+    await stopScanner();
+
+
+    const value =
+      String(
+        decodedText || ''
+      ).trim();
+
+
+    /**********************************************************
+     * STEP 1 TEST
+     *
+     * For now we display the decoded QR.
+     * Next we connect this directly to Apps Script backend.
+     **********************************************************/
+
+    showDecodedQr(
+      value
+    );
+
+  }
+
+
+  /************************************************************
+   * STOP SCANNER
+   ************************************************************/
+
+  stopButton.addEventListener(
+    'click',
+    stopScanner
+  );
+
+
+  async function stopScanner() {
+
+    try {
+
+      if (
+        scanner &&
+        scannerActive
+      ) {
+
+        await scanner.stop();
+
+
+        try {
+
+          scanner.clear();
+
+        }
+
+        catch (error) {}
+
+      }
+
+    }
+
+    catch (error) {}
+
+
+    scanner =
+      null;
+
+
+    scannerActive =
+      false;
+
+
+    reader.classList.add(
+      'hidden'
+    );
+
+
+    stopButton.classList.add(
+      'hidden'
+    );
+
+
+    startButton.disabled =
+      false;
+
+  }
+
+
+  /************************************************************
+   * DISPLAY SCANNED QR
+   ************************************************************/
+
+  function showDecodedQr(
+    value
+  ) {
+
+    let validFormat =
+      false;
+
+
+    if (
+      value.startsWith(
+        'ONE49|'
+      )
+    ) {
+
+      validFormat =
+        true;
+
+    }
+
+
+    resultCard.classList.remove(
+      'hidden'
+    );
+
+
+    resultContent.innerHTML = `
+
+      <div
+        class="result-title">
+
+        ${
+          validFormat
+            ? '✓ ONE49 QR DETECTED'
+            : '⚠ QR DETECTED'
+        }
+
+      </div>
+
+
+      <div class="row">
+
+        <div class="label">
+          QR Content
+        </div>
+
+        <div class="value">
+          ${escapeHtml(value)}
+        </div>
+
+      </div>
+
+
+      <div class="row">
+
+        <div class="label">
+          Scanner Status
+        </div>
+
+        <div class="value">
+
+          ${
+            validFormat
+              ? 'ONE49 QR format recognised'
+              : 'QR is not recognised as an ONE49 registration'
+          }
+
+        </div>
+
+      </div>
+
+    `;
+
+
+    showStatus(
+      validFormat
+        ? 'QR successfully scanned.'
+        : 'QR scanned, but it is not an ONE49 QR.',
+      validFormat
+        ? 'success'
+        : 'error'
+    );
+
+
+    resultCard.scrollIntoView({
+      behavior:
+        'smooth',
+
+      block:
+        'start'
+    });
+
+  }
+
+
+  /************************************************************
+   * MANUAL SEARCH TEST
+   ************************************************************/
+
+  document
+    .getElementById(
+      'manualButton'
+    )
+    .addEventListener(
+      'click',
+      manualSearch
+    );
+
+
+  function manualSearch() {
+
+    const value =
+      document
+        .getElementById(
+          'manualInput'
+        )
+        .value
+        .trim()
+        .toUpperCase();
+
+
+    if (!value) {
+
+      showStatus(
+        'Enter a Registration ID or vehicle plate.',
+        'error'
+      );
+
+      return;
+
+    }
+
+
+    resultCard.classList.remove(
+      'hidden'
+    );
+
+
+    resultContent.innerHTML = `
+
+      <div
+        class="result-title"
+        style="color:#172B4D">
+
+        Manual Search Test
+
+      </div>
+
+
+      <div class="row">
+
+        <div class="label">
+          Search Value
+        </div>
+
+        <div class="value">
+          ${escapeHtml(value)}
+        </div>
+
+      </div>
+
+
+      <div class="row">
+
+        <div class="label">
+          Status
+        </div>
+
+        <div class="value">
+          Backend connection will be enabled in the next step.
+        </div>
+
+      </div>
+
+    `;
+
+  }
+
+
+  /************************************************************
+   * STATUS
+   ************************************************************/
+
+  function showStatus(
+    message,
+    type
+  ) {
+
+    scannerStatus.className =
+      'scanner-status';
+
+
+    if (
+      type ===
+      'success'
+    ) {
+
+      scannerStatus.classList.add(
+        'success'
+      );
+
+    }
+
+
+    if (
+      type ===
+      'error'
+    ) {
+
+      scannerStatus.classList.add(
+        'error'
+      );
+
+    }
+
+
+    scannerStatus.textContent =
+      message;
+
+
+    scannerStatus.classList.remove(
+      'hidden'
+    );
+
+  }
+
+
+  /************************************************************
+   * ESCAPE HTML
+   ************************************************************/
+
+  function escapeHtml(
+    value
+  ) {
+
+    return String(
+      value || ''
+    )
+      .replace(
+        /&/g,
+        '&amp;'
+      )
+      .replace(
+        /</g,
+        '&lt;'
+      )
+      .replace(
+        />/g,
+        '&gt;'
+      )
+      .replace(
+        /"/g,
+        '&quot;'
+      )
+      .replace(
+        /'/g,
+        '&#039;'
+      );
+
+  }
+
+</script>
+
+</body>
+
+</html>
