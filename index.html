@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -111,10 +112,20 @@ button {
   border-radius: 10px;
   font-size: 16px;
   font-weight: bold;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: .55;
 }
 
 .primary {
   background: #0F766E;
+  color: white;
+}
+
+.secondary {
+  background: #172B4D;
   color: white;
 }
 
@@ -167,13 +178,54 @@ button {
   font-weight: bold;
 }
 
+.divider {
+  display: flex;
+  align-items: center;
+  margin: 22px 0;
+  color: #9ca3af;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #e5e7eb;
+}
+
+.divider span {
+  padding: 0 12px;
+}
+
+.manualBox {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 15px;
+}
+
+.manualTitle {
+  font-weight: bold;
+  color: #172B4D;
+  margin-bottom: 5px;
+}
+
+.example {
+  font-size: 11px;
+  color: #6b7280;
+  margin-bottom: 12px;
+}
+
 .logout {
   display: block;
   text-align: center;
-  margin-top: 14px;
+  margin-top: 16px;
   color: #991b1b;
   text-decoration: none;
   font-size: 13px;
+  font-weight: bold;
 }
 
 .footer {
@@ -202,7 +254,7 @@ button {
   </p>
 
   <div class="version">
-    Security Portal V2.4
+    Security Portal V2.8
   </div>
 
 </div>
@@ -217,18 +269,25 @@ button {
     id="loginCard"
     class="card hidden">
 
+
     <div class="title">
+
       Security Officer Login
+
     </div>
 
+
     <div class="description">
+
       Authorized security personnel only.
+
     </div>
 
 
     <form
       id="loginForm"
       method="POST">
+
 
       <input
         type="hidden"
@@ -239,6 +298,7 @@ button {
       <label>
         Officer ID
       </label>
+
 
       <input
         type="text"
@@ -251,6 +311,7 @@ button {
       <label>
         PIN
       </label>
+
 
       <input
         type="password"
@@ -267,21 +328,32 @@ button {
         Guard Post
       </label>
 
+
       <select
         name="guardPost"
         required>
 
+
         <option value="">
+
           Select Guard Post
+
         </option>
+
 
         <option value="LEVEL 4 — MAIN ENTRANCE">
+
           Level 4 — Main Entrance
+
         </option>
 
+
         <option value="LEVEL 1 — SERVICE / LOADING">
+
           Level 1 — Service / Loading
+
         </option>
+
 
       </select>
 
@@ -294,25 +366,21 @@ button {
 
       </button>
 
+
     </form>
 
-
-    <div
-      id="loginError"
-      class="status error hidden">
-    </div>
 
   </div>
 
 
-  <!-- SCANNER -->
+  <!-- SECURITY PORTAL -->
 
   <div
     id="scannerCard"
     class="card hidden">
 
-    <div
-      class="officer">
+
+    <div class="officer">
 
       ✓ Security Officer Authenticated
 
@@ -320,13 +388,21 @@ button {
 
 
     <div class="title">
-      Live QR Scanner
+
+      Visitor Verification
+
     </div>
 
 
     <div class="description">
-      Scan the visitor or service QR code.
+
+      Scan the secure ONE49 QR code or use
+      Manual Search when the visitor cannot provide the QR.
+
     </div>
+
+
+    <!-- QR SCANNER -->
 
 
     <button
@@ -334,7 +410,7 @@ button {
       class="primary"
       type="button">
 
-      📷 Start Live Scanner
+      📷 Start Live QR Scanner
 
     </button>
 
@@ -361,6 +437,85 @@ button {
     </div>
 
 
+    <!-- DIVIDER -->
+
+
+    <div class="divider">
+
+      <span>
+        OR
+      </span>
+
+    </div>
+
+
+    <!-- MANUAL SEARCH -->
+
+
+    <div class="manualBox">
+
+
+      <div class="manualTitle">
+
+        ⌨️ Manual Registration Search
+
+      </div>
+
+
+      <div class="example">
+
+        Example: V2608220001 or S2608220001
+
+      </div>
+
+
+      <form
+        id="manualForm"
+        method="POST">
+
+
+        <input
+          type="hidden"
+          name="action"
+          value="manualSearch">
+
+
+        <input
+          id="manualSession"
+          type="hidden"
+          name="session">
+
+
+        <label>
+          Registration ID
+        </label>
+
+
+        <input
+          id="registrationId"
+          type="text"
+          name="rid"
+          placeholder="Enter Registration ID"
+          autocomplete="off"
+          autocapitalize="characters"
+          required>
+
+
+        <button
+          class="secondary"
+          type="submit">
+
+          🔎 Search Registration
+
+        </button>
+
+
+      </form>
+
+
+    </div>
+
+
     <a
       id="logoutButton"
       class="logout"
@@ -370,11 +525,14 @@ button {
 
     </a>
 
+
   </div>
 
 
   <div class="footer">
+
     ONE49 Residence Security System
+
   </div>
 
 
@@ -385,10 +543,9 @@ button {
 
 
 /**************************************************************
- * IMPORTANT
- *
- * Paste the SAME Apps Script /exec URL currently working.
+ * ONE49 SECURITY PORTAL FRONTEND V2.8
  **************************************************************/
+
 
 const ONE49_BACKEND_URL =
   'https://script.google.com/macros/s/AKfycbxoTQgBFcrqzJ3Xoi6Tzb-EUGRaYRpgvSsexBfsA3X_8uIf3IA7qW7ed296l-VPuQFZ/exec';
@@ -407,7 +564,7 @@ let processing =
 
 
 /**************************************************************
- * URL
+ * URL PARAMETERS
  **************************************************************/
 
 const params =
@@ -419,12 +576,6 @@ const params =
 const session =
   String(
     params.get('session') || ''
-  ).trim();
-
-
-const loginError =
-  String(
-    params.get('loginError') || ''
   ).trim();
 
 
@@ -450,9 +601,21 @@ const loginForm =
   );
 
 
-const loginErrorBox =
+const manualForm =
   document.getElementById(
-    'loginError'
+    'manualForm'
+  );
+
+
+const manualSession =
+  document.getElementById(
+    'manualSession'
+  );
+
+
+const registrationId =
+  document.getElementById(
+    'registrationId'
   );
 
 
@@ -487,12 +650,20 @@ const logoutButton =
 
 
 /**************************************************************
- * INITIALIZE
+ * SET FORM ACTIONS
  **************************************************************/
 
 loginForm.action =
   ONE49_BACKEND_URL;
 
+
+manualForm.action =
+  ONE49_BACKEND_URL;
+
+
+/**************************************************************
+ * INITIAL PAGE
+ **************************************************************/
 
 if (
   session
@@ -505,12 +676,13 @@ if (
     );
 
 
+  manualSession.value =
+    session;
+
+
   logoutButton.href =
     ONE49_BACKEND_URL +
-    '?action=logout&session=' +
-    encodeURIComponent(
-      session
-    );
+    '?logoutNotUsed=1';
 
 }
 
@@ -525,25 +697,85 @@ else {
 }
 
 
-if (
-  loginError
-) {
+/**************************************************************
+ * LOGOUT
+ *
+ * Uses POST because that is the stable path.
+ **************************************************************/
 
-  loginErrorBox.textContent =
-    loginError;
+logoutButton
+  .addEventListener(
+    'click',
+    function(event) {
+
+      event.preventDefault();
 
 
-  loginErrorBox
-    .classList
-    .remove(
-      'hidden'
-    );
+      const form =
+        document.createElement(
+          'form'
+        );
 
-}
+
+      form.method =
+        'POST';
+
+
+      form.action =
+        ONE49_BACKEND_URL;
+
+
+      addHidden(
+        form,
+        'action',
+        'logout'
+      );
+
+
+      addHidden(
+        form,
+        'session',
+        session
+      );
+
+
+      document.body
+        .appendChild(
+          form
+        );
+
+
+      form.submit();
+
+    }
+  );
 
 
 /**************************************************************
- * START SCANNER
+ * MANUAL SEARCH NORMALIZATION
+ **************************************************************/
+
+registrationId
+  .addEventListener(
+    'input',
+    function() {
+
+      registrationId.value =
+        String(
+          registrationId.value || ''
+        )
+          .toUpperCase()
+          .replace(
+            /[^A-Z0-9]/g,
+            ''
+          );
+
+    }
+  );
+
+
+/**************************************************************
+ * START QR SCANNER
  **************************************************************/
 
 startButton
@@ -851,7 +1083,7 @@ async function qrSuccess(
   }
 
 
-  submitVerification(
+  submitQrVerification(
     rid,
     token
   );
@@ -860,10 +1092,10 @@ async function qrSuccess(
 
 
 /**************************************************************
- * SUBMIT VERIFICATION
+ * QR POST
  **************************************************************/
 
-function submitVerification(
+function submitQrVerification(
   rid,
   token
 ) {
@@ -880,10 +1112,6 @@ function submitVerification(
 
   form.action =
     ONE49_BACKEND_URL;
-
-
-  form.style.display =
-    'none';
 
 
   addHidden(
@@ -961,7 +1189,7 @@ function addHidden(
 
 
 /**************************************************************
- * STOP
+ * STOP SCANNER
  **************************************************************/
 
 stopButton
