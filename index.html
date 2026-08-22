@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
   <meta charset="UTF-8">
 
   <meta
@@ -16,200 +17,521 @@
 
   <script src="https://unpkg.com/html5-qrcode"></script>
 
+
   <style>
 
     * {
       box-sizing: border-box;
     }
 
+
     body {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: #f3f4f6;
-      color: #1f2937;
+
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+      background:
+        #f3f4f6;
+
+      color:
+        #1f2937;
     }
 
+
     .header {
-      background: #172B4D;
-      color: white;
-      text-align: center;
-      padding: 18px 15px;
+      background:
+        #172B4D;
+
+      color:
+        white;
+
+      text-align:
+        center;
+
+      padding:
+        18px 15px;
     }
+
 
     .header h1 {
       margin: 0;
-      font-size: 22px;
+
+      font-size:
+        22px;
     }
+
 
     .header p {
-      margin: 5px 0 0;
-      font-size: 13px;
-      opacity: 0.9;
+      margin:
+        5px 0 0;
+
+      font-size:
+        13px;
+
+      opacity:
+        0.9;
     }
+
 
     .version {
-      margin-top: 5px;
-      font-size: 11px;
-      opacity: 0.65;
+      margin-top:
+        5px;
+
+      font-size:
+        11px;
+
+      opacity:
+        0.65;
     }
+
 
     .container {
-      width: 100%;
-      max-width: 620px;
-      margin: auto;
-      padding: 16px;
+      width:
+        100%;
+
+      max-width:
+        620px;
+
+      margin:
+        auto;
+
+      padding:
+        16px;
     }
+
 
     .card {
-      background: white;
-      border-radius: 14px;
-      padding: 18px;
-      margin-bottom: 15px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      background:
+        white;
+
+      border-radius:
+        14px;
+
+      padding:
+        18px;
+
+      margin-bottom:
+        15px;
+
+      box-shadow:
+        0 2px 8px
+        rgba(
+          0,
+          0,
+          0,
+          0.08
+        );
     }
 
-    .scan-title {
-      font-size: 17px;
-      font-weight: bold;
-      margin-bottom: 6px;
+
+    .section-title {
+      font-size:
+        17px;
+
+      font-weight:
+        bold;
+
+      margin-bottom:
+        6px;
     }
 
-    .scan-description {
-      font-size: 13px;
-      color: #6b7280;
-      margin-bottom: 15px;
-      line-height: 1.4;
+
+    .description {
+      font-size:
+        13px;
+
+      color:
+        #6b7280;
+
+      line-height:
+        1.4;
+
+      margin-bottom:
+        15px;
     }
+
 
     button {
-      width: 100%;
-      min-height: 52px;
-      border: 0;
-      border-radius: 10px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
+      width:
+        100%;
+
+      min-height:
+        52px;
+
+      border:
+        0;
+
+      border-radius:
+        10px;
+
+      font-size:
+        16px;
+
+      font-weight:
+        bold;
+
+      cursor:
+        pointer;
     }
+
+
+    button:disabled {
+      opacity:
+        0.55;
+
+      cursor:
+        not-allowed;
+    }
+
 
     .primary {
-      background: #0F766E;
-      color: white;
+      background:
+        #0F766E;
+
+      color:
+        white;
     }
+
 
     .secondary {
-      background: #172B4D;
-      color: white;
-      margin-top: 10px;
+      background:
+        #172B4D;
+
+      color:
+        white;
+
+      margin-top:
+        10px;
     }
+
 
     .danger {
-      background: #991B1B;
-      color: white;
-      margin-top: 10px;
+      background:
+        #991B1B;
+
+      color:
+        white;
+
+      margin-top:
+        10px;
     }
+
 
     #reader {
-      width: 100%;
-      margin-top: 15px;
-      overflow: hidden;
-      border-radius: 12px;
+      width:
+        100%;
+
+      margin-top:
+        15px;
+
+      overflow:
+        hidden;
+
+      border-radius:
+        12px;
     }
+
 
     #reader video {
-      border-radius: 12px;
+      border-radius:
+        12px;
     }
+
 
     .hidden {
-      display: none !important;
+      display:
+        none !important;
     }
 
-    .scanner-status {
-      margin-top: 12px;
-      padding: 12px;
-      border-radius: 9px;
-      text-align: center;
-      font-size: 14px;
-      font-weight: bold;
-      background: #eaf2ff;
-      color: #172B4D;
+
+    .status-box {
+      margin-top:
+        12px;
+
+      padding:
+        12px;
+
+      border-radius:
+        9px;
+
+      text-align:
+        center;
+
+      font-size:
+        14px;
+
+      font-weight:
+        bold;
+
+      background:
+        #eaf2ff;
+
+      color:
+        #172B4D;
     }
 
-    .success {
-      background: #dcfce7;
-      color: #166534;
+
+    .status-success {
+      background:
+        #dcfce7;
+
+      color:
+        #166534;
     }
 
-    .error {
-      background: #fee2e2;
-      color: #991b1b;
+
+    .status-error {
+      background:
+        #fee2e2;
+
+      color:
+        #991b1b;
     }
 
-    .qr-result {
-      margin-top: 15px;
+
+    .status-warning {
+      background:
+        #fef3c7;
+
+      color:
+        #92400e;
     }
 
-    .result-title {
-      text-align: center;
-      font-size: 20px;
-      font-weight: bold;
-      color: #166534;
-      margin-bottom: 15px;
+
+    .main-result {
+      text-align:
+        center;
+
+      padding:
+        15px;
+
+      border-radius:
+        10px;
+
+      font-size:
+        19px;
+
+      font-weight:
+        bold;
+
+      margin-bottom:
+        15px;
     }
+
+
+    .result-valid {
+      background:
+        #dcfce7;
+
+      color:
+        #166534;
+    }
+
+
+    .result-invalid {
+      background:
+        #fee2e2;
+
+      color:
+        #991b1b;
+    }
+
+
+    .result-warning {
+      background:
+        #fef3c7;
+
+      color:
+        #92400e;
+    }
+
+
+    .registration-id {
+      text-align:
+        center;
+
+      color:
+        #172B4D;
+
+      font-size:
+        24px;
+
+      font-weight:
+        bold;
+
+      margin:
+        8px 0 18px;
+    }
+
 
     .row {
-      padding: 10px 0;
-      border-bottom: 1px solid #e5e7eb;
+      padding:
+        10px 0;
+
+      border-bottom:
+        1px solid #e5e7eb;
     }
+
 
     .label {
-      font-size: 11px;
-      color: #6b7280;
-      text-transform: uppercase;
-      margin-bottom: 4px;
+      font-size:
+        11px;
+
+      color:
+        #6b7280;
+
+      text-transform:
+        uppercase;
+
+      margin-bottom:
+        4px;
     }
+
 
     .value {
-      font-size: 15px;
-      font-weight: bold;
-      word-break: break-all;
+      font-size:
+        16px;
+
+      font-weight:
+        bold;
+
+      word-break:
+        break-word;
     }
 
-    input {
-      width: 100%;
-      min-height: 50px;
-      padding: 12px;
-      border: 1px solid #d1d5db;
-      border-radius: 9px;
-      font-size: 16px;
-      outline: none;
-      text-transform: uppercase;
+
+    .entrance {
+      margin-top:
+        15px;
+
+      padding:
+        16px;
+
+      border-radius:
+        9px;
+
+      background:
+        #eaf2ff;
+
+      color:
+        #172B4D;
+
+      text-align:
+        center;
+
+      font-size:
+        17px;
+
+      font-weight:
+        bold;
     }
 
-    input:focus {
-      border-color: #172B4D;
+
+    .warning-card {
+      margin-top:
+        15px;
+
+      padding:
+        13px;
+
+      border-radius:
+        9px;
+
+      background:
+        #fef3c7;
+
+      color:
+        #92400e;
+
+      font-weight:
+        bold;
+
+      text-align:
+        center;
     }
 
-    .footer-note {
-      text-align: center;
-      font-size: 11px;
-      color: #9ca3af;
-      margin-top: 15px;
+
+    .manual-locked {
+      padding:
+        14px;
+
+      border-radius:
+        9px;
+
+      background:
+        #f3f4f6;
+
+      color:
+        #6b7280;
+
+      font-size:
+        13px;
+
+      line-height:
+        1.4;
+    }
+
+
+    .footer {
+      text-align:
+        center;
+
+      font-size:
+        11px;
+
+      color:
+        #9ca3af;
+
+      margin:
+        15px 0 25px;
+    }
+
+
+    @media
+    (max-width: 500px) {
+
+      .container {
+        padding:
+          12px;
+      }
+
+
+      .card {
+        padding:
+          15px;
+      }
+
+
+      .header h1 {
+        font-size:
+          20px;
+      }
+
     }
 
   </style>
 
 </head>
 
+
 <body>
+
 
   <div class="header">
 
-    <h1>ONE49 Security Portal</h1>
+    <h1>
+      ONE49 Security Portal
+    </h1>
 
-    <p>Visitor & Service Access Verification</p>
+    <p>
+      Visitor & Service Access Verification
+    </p>
 
     <div class="version">
-      Live Scanner V2.0
+      Live Security Portal V2.0
     </div>
 
   </div>
@@ -218,15 +540,17 @@
   <div class="container">
 
 
+    <!-- LIVE SCANNER -->
+
     <div class="card">
 
-      <div class="scan-title">
+      <div class="section-title">
         Live QR Scanner
       </div>
 
-      <div class="scan-description">
-        Point the security phone camera at the QR code from the
-        ONE49 pre-registration confirmation email.
+      <div class="description">
+        Scan the secure QR code from the ONE49 pre-registration
+        confirmation email.
       </div>
 
 
@@ -258,40 +582,35 @@
 
       <div
         id="scannerStatus"
-        class="scanner-status hidden">
+        class="status-box hidden">
       </div>
 
     </div>
 
+
+    <!-- MANUAL SEARCH -->
 
     <div class="card">
 
-      <div class="scan-title">
+      <div class="section-title">
         Manual Search
       </div>
 
-      <div class="scan-description">
-        Backup option for Registration ID or vehicle registration number.
+      <div class="manual-locked">
+
+        🔒 Manual database search is temporarily locked.
+
+        <br><br>
+
+        It will be enabled after ONE49 Security Officer
+        Login / PIN protection is activated.
+
       </div>
-
-
-      <input
-        id="manualInput"
-        type="text"
-        placeholder="REGISTRATION ID / VEHICLE PLATE">
-
-
-      <button
-        id="manualButton"
-        class="secondary"
-        type="button">
-
-        Search Registration
-
-      </button>
 
     </div>
 
+
+    <!-- RESULT -->
 
     <div
       id="resultCard"
@@ -304,338 +623,280 @@
     </div>
 
 
-    <div class="footer-note">
+    <div class="footer">
+
       ONE49 Residence Security System
+
     </div>
+
 
   </div>
 
 
 <script>
 
-  let scanner = null;
-  let scannerActive = false;
-  let processingScan = false;
+
+/**************************************************************
+ * ONE49 SECURITY PORTAL
+ * FRONTEND V2.0
+ **************************************************************/
 
 
-  const startButton =
-    document.getElementById(
-      'startButton'
-    );
+/**************************************************************
+ * IMPORTANT
+ *
+ * Paste Apps Script Web App /exec URL below.
+ **************************************************************/
 
-  const stopButton =
-    document.getElementById(
-      'stopButton'
-    );
-
-  const reader =
-    document.getElementById(
-      'reader'
-    );
-
-  const scannerStatus =
-    document.getElementById(
-      'scannerStatus'
-    );
-
-  const resultCard =
-    document.getElementById(
-      'resultCard'
-    );
-
-  const resultContent =
-    document.getElementById(
-      'resultContent'
-    );
+const ONE49_API_URL =
+  'https://script.google.com/macros/s/AKfycbxoTQgBFcrqzJ3Xoi6Tzb-EUGRaYRpgvSsexBfsA3X_8uIf3IA7qW7ed296l-VPuQFZ/exec';
 
 
-  /************************************************************
-   * START LIVE SCANNER
-   ************************************************************/
+let scanner =
+  null;
 
-  startButton.addEventListener(
-    'click',
-    startScanner
+
+let scannerActive =
+  false;
+
+
+let processing =
+  false;
+
+
+let callbackSequence =
+  0;
+
+
+/**************************************************************
+ * DOM
+ **************************************************************/
+
+const startButton =
+  document.getElementById(
+    'startButton'
   );
 
 
-  async function startScanner() {
+const stopButton =
+  document.getElementById(
+    'stopButton'
+  );
 
-    if (scannerActive) {
-      return;
+
+const reader =
+  document.getElementById(
+    'reader'
+  );
+
+
+const scannerStatus =
+  document.getElementById(
+    'scannerStatus'
+  );
+
+
+const resultCard =
+  document.getElementById(
+    'resultCard'
+  );
+
+
+const resultContent =
+  document.getElementById(
+    'resultContent'
+  );
+
+
+/**************************************************************
+ * START
+ **************************************************************/
+
+startButton.addEventListener(
+  'click',
+  startScanner
+);
+
+
+async function startScanner() {
+
+  if (
+    scannerActive
+  ) {
+
+    return;
+
+  }
+
+
+  if (
+    !apiConfigured()
+  ) {
+
+    showScannerStatus(
+      'ONE49 backend URL has not been configured.',
+      'error'
+    );
+
+
+    return;
+
+  }
+
+
+  processing =
+    false;
+
+
+  resultCard
+    .classList
+    .add(
+      'hidden'
+    );
+
+
+  startButton.disabled =
+    true;
+
+
+  reader
+    .classList
+    .remove(
+      'hidden'
+    );
+
+
+  stopButton
+    .classList
+    .remove(
+      'hidden'
+    );
+
+
+  showScannerStatus(
+    'Starting camera...',
+    ''
+  );
+
+
+  try {
+
+    scanner =
+      new Html5Qrcode(
+        'reader'
+      );
+
+
+    const cameras =
+      await Html5Qrcode
+        .getCameras();
+
+
+    if (
+      !cameras ||
+      cameras.length === 0
+    ) {
+
+      throw new Error(
+        'No camera found.'
+      );
+
     }
 
 
-    processingScan = false;
+    let cameraId =
+      cameras[0].id;
 
 
-    resultCard.classList.add(
-      'hidden'
-    );
+    const preferred =
+      cameras.find(
+        function(camera) {
+
+          const label =
+            String(
+              camera.label || ''
+            )
+              .toLowerCase();
 
 
-    showStatus(
-      'Starting camera...',
-      ''
-    );
+          return (
+            label.includes('back') ||
+            label.includes('rear') ||
+            label.includes('environment')
+          );
+
+        }
+      );
 
 
-    reader.classList.remove(
-      'hidden'
-    );
+    if (
+      preferred
+    ) {
+
+      cameraId =
+        preferred.id;
+
+    }
 
 
-    stopButton.classList.remove(
-      'hidden'
-    );
+    await scanner.start(
 
+      cameraId,
 
-    startButton.disabled =
-      true;
+      {
 
+        fps:
+          12,
 
-    try {
-
-      scanner =
-        new Html5Qrcode(
-          'reader'
-        );
-
-
-      const cameras =
-        await Html5Qrcode.getCameras();
-
-
-      if (
-        !cameras ||
-        cameras.length === 0
-      ) {
-
-        throw new Error(
-          'No camera was found on this device.'
-        );
-
-      }
-
-
-      let cameraId =
-        cameras[0].id;
-
-
-      /********************************************************
-       * PREFER BACK / REAR CAMERA
-       ********************************************************/
-
-      const rearCamera =
-        cameras.find(
-          camera => {
-
-            const label =
-              String(
-                camera.label || ''
-              ).toLowerCase();
-
-
-            return (
-              label.includes('back') ||
-              label.includes('rear') ||
-              label.includes('environment')
-            );
-
-          }
-        );
-
-
-      if (rearCamera) {
-
-        cameraId =
-          rearCamera.id;
-
-      }
-
-
-      await scanner.start(
-
-        cameraId,
-
-        {
-          fps: 12,
-
-          qrbox: function(
-            viewfinderWidth,
-            viewfinderHeight
+        qrbox:
+          function(
+            width,
+            height
           ) {
 
-            const minEdge =
+            const edge =
               Math.min(
-                viewfinderWidth,
-                viewfinderHeight
+                width,
+                height
               );
 
 
             const size =
               Math.floor(
-                minEdge * 0.72
+                edge * 0.72
               );
 
 
             return {
-              width: size,
-              height: size
+              width:
+                size,
+              height:
+                size
             };
 
-          },
+          }
 
-          aspectRatio: 1.0
-        },
+      },
 
-        onQrSuccess,
+      handleQrSuccess,
 
-        function() {
-          // Ignore normal scanning frames.
-        }
+      function() {}
 
-      );
+    );
 
 
-      scannerActive =
-        true;
-
-
-      showStatus(
-        'Camera ready — point at ONE49 QR code.',
-        'success'
-      );
-
-    }
-
-    catch (error) {
-
-      scannerActive =
-        false;
-
-
-      scanner =
-        null;
-
-
-      reader.classList.add(
-        'hidden'
-      );
-
-
-      stopButton.classList.add(
-        'hidden'
-      );
-
-
-      startButton.disabled =
-        false;
-
-
-      showStatus(
-        'Camera could not be started: ' +
-        (
-          error &&
-          error.message
-            ? error.message
-            : String(error)
-        ),
-        'error'
-      );
-
-    }
-
-  }
-
-
-  /************************************************************
-   * QR SUCCESS
-   ************************************************************/
-
-  async function onQrSuccess(
-    decodedText
-  ) {
-
-    if (processingScan) {
-      return;
-    }
-
-
-    processingScan =
+    scannerActive =
       true;
 
 
-    if (
-      navigator.vibrate
-    ) {
-
-      navigator.vibrate(
-        120
-      );
-
-    }
-
-
-    await stopScanner();
-
-
-    const value =
-      String(
-        decodedText || ''
-      ).trim();
-
-
-    /**********************************************************
-     * STEP 1 TEST
-     *
-     * For now we display the decoded QR.
-     * Next we connect this directly to Apps Script backend.
-     **********************************************************/
-
-    showDecodedQr(
-      value
+    showScannerStatus(
+      'Camera ready — scan ONE49 QR code.',
+      'success'
     );
 
   }
 
-
-  /************************************************************
-   * STOP SCANNER
-   ************************************************************/
-
-  stopButton.addEventListener(
-    'click',
-    stopScanner
-  );
-
-
-  async function stopScanner() {
-
-    try {
-
-      if (
-        scanner &&
-        scannerActive
-      ) {
-
-        await scanner.stop();
-
-
-        try {
-
-          scanner.clear();
-
-        }
-
-        catch (error) {}
-
-      }
-
-    }
-
-    catch (error) {}
-
+  catch (error) {
 
     scanner =
       null;
@@ -645,285 +906,851 @@
       false;
 
 
-    reader.classList.add(
-      'hidden'
-    );
-
-
-    stopButton.classList.add(
-      'hidden'
-    );
-
-
     startButton.disabled =
       false;
+
+
+    reader
+      .classList
+      .add(
+        'hidden'
+      );
+
+
+    stopButton
+      .classList
+      .add(
+        'hidden'
+      );
+
+
+    showScannerStatus(
+      'Camera error: ' +
+      (
+        error &&
+        error.message
+          ? error.message
+          : String(error)
+      ),
+      'error'
+    );
+
+  }
+
+}
+
+
+/**************************************************************
+ * QR SUCCESS
+ **************************************************************/
+
+async function handleQrSuccess(
+  decodedText
+) {
+
+  if (
+    processing
+  ) {
+
+    return;
 
   }
 
 
-  /************************************************************
-   * DISPLAY SCANNED QR
-   ************************************************************/
+  processing =
+    true;
 
-  function showDecodedQr(
-    value
+
+  if (
+    navigator.vibrate
   ) {
 
-    let validFormat =
-      false;
+    navigator.vibrate(
+      120
+    );
 
+  }
+
+
+  await stopScanner();
+
+
+  const qr =
+    String(
+      decodedText || ''
+    ).trim();
+
+
+  if (
+    !qr.startsWith(
+      'ONE49|'
+    )
+  ) {
+
+    showScannerStatus(
+      'This is not a valid ONE49 QR code.',
+      'error'
+    );
+
+
+    showInvalidResult(
+      'Invalid ONE49 QR Code.'
+    );
+
+
+    return;
+
+  }
+
+
+  showScannerStatus(
+    'QR detected — verifying registration...',
+    ''
+  );
+
+
+  verifyQrWithBackend(
+    qr
+  );
+
+}
+
+
+/**************************************************************
+ * STOP
+ **************************************************************/
+
+stopButton.addEventListener(
+  'click',
+  stopScanner
+);
+
+
+async function stopScanner() {
+
+  try {
 
     if (
-      value.startsWith(
-        'ONE49|'
-      )
+      scanner &&
+      scannerActive
     ) {
 
-      validFormat =
-        true;
+      await scanner.stop();
+
+
+      try {
+
+        scanner.clear();
+
+      }
+
+      catch (error) {}
 
     }
 
+  }
 
-    resultCard.classList.remove(
+  catch (error) {}
+
+
+  scanner =
+    null;
+
+
+  scannerActive =
+    false;
+
+
+  startButton.disabled =
+    false;
+
+
+  reader
+    .classList
+    .add(
       'hidden'
     );
 
 
-    resultContent.innerHTML = `
+  stopButton
+    .classList
+    .add(
+      'hidden'
+    );
 
-      <div
-        class="result-title">
+}
 
-        ${
-          validFormat
-            ? '✓ ONE49 QR DETECTED'
-            : '⚠ QR DETECTED'
+
+/**************************************************************
+ * JSONP VERIFY
+ **************************************************************/
+
+function verifyQrWithBackend(
+  payload
+) {
+
+  callbackSequence++;
+
+
+  const callbackName =
+    'one49QrCallback_' +
+    Date.now() +
+    '_' +
+    callbackSequence;
+
+
+  const script =
+    document.createElement(
+      'script'
+    );
+
+
+  let finished =
+    false;
+
+
+  const timeout =
+    setTimeout(
+      function() {
+
+        if (
+          finished
+        ) {
+
+          return;
+
         }
 
-      </div>
+
+        finished =
+          true;
 
 
-      <div class="row">
-
-        <div class="label">
-          QR Content
-        </div>
-
-        <div class="value">
-          ${escapeHtml(value)}
-        </div>
-
-      </div>
+        cleanup();
 
 
-      <div class="row">
+        showScannerStatus(
+          'Unable to reach ONE49 database.',
+          'error'
+        );
 
-        <div class="label">
-          Scanner Status
-        </div>
 
-        <div class="value">
+        showInvalidResult(
+          'Database connection timeout.'
+        );
 
-          ${
-            validFormat
-              ? 'ONE49 QR format recognised'
-              : 'QR is not recognised as an ONE49 registration'
-          }
+      },
+      15000
+    );
 
-        </div>
+
+  function cleanup() {
+
+    clearTimeout(
+      timeout
+    );
+
+
+    try {
+
+      delete window[
+        callbackName
+      ];
+
+    }
+
+    catch (error) {}
+
+
+    if (
+      script.parentNode
+    ) {
+
+      script.parentNode
+        .removeChild(
+          script
+        );
+
+    }
+
+  }
+
+
+  window[
+    callbackName
+  ] =
+    function(data) {
+
+      if (
+        finished
+      ) {
+
+        return;
+
+      }
+
+
+      finished =
+        true;
+
+
+      cleanup();
+
+
+      handleBackendResult(
+        data
+      );
+
+    };
+
+
+  script.onerror =
+    function() {
+
+      if (
+        finished
+      ) {
+
+        return;
+
+      }
+
+
+      finished =
+        true;
+
+
+      cleanup();
+
+
+      showScannerStatus(
+        'Unable to connect to ONE49 backend.',
+        'error'
+      );
+
+
+      showInvalidResult(
+        'Backend connection failed.'
+      );
+
+    };
+
+
+  const url =
+    ONE49_API_URL +
+
+    '?action=verifyQr' +
+
+    '&payload=' +
+    encodeURIComponent(
+      payload
+    ) +
+
+    '&callback=' +
+    encodeURIComponent(
+      callbackName
+    ) +
+
+    '&t=' +
+    Date.now();
+
+
+  script.src =
+    url;
+
+
+  document.body
+    .appendChild(
+      script
+    );
+
+}
+
+
+/**************************************************************
+ * BACKEND RESULT
+ **************************************************************/
+
+function handleBackendResult(
+  data
+) {
+
+  if (
+    !data
+  ) {
+
+    showInvalidResult(
+      'No response from ONE49 database.'
+    );
+
+
+    return;
+
+  }
+
+
+  if (
+    data.success !== true ||
+    data.valid !== true
+  ) {
+
+    showScannerStatus(
+      data.message ||
+      'QR verification failed.',
+      'error'
+    );
+
+
+    showInvalidResult(
+      data.message ||
+      'QR verification failed.',
+      data.registrationId || ''
+    );
+
+
+    return;
+
+  }
+
+
+  showScannerStatus(
+    'QR verified successfully.',
+    'success'
+  );
+
+
+  showRegistration(
+    data
+  );
+
+}
+
+
+/**************************************************************
+ * VALID REGISTRATION
+ **************************************************************/
+
+function showRegistration(
+  data
+) {
+
+  resultCard
+    .classList
+    .remove(
+      'hidden'
+    );
+
+
+  let resultClass =
+    data.entryAllowed
+      ? 'result-valid'
+      : 'result-invalid';
+
+
+  let resultText =
+    data.entryAllowed
+      ? '✓ REGISTRATION VALID'
+      : '✕ ENTRY NOT PERMITTED';
+
+
+  if (
+    data.status ===
+    'CHECKED-IN'
+  ) {
+
+    resultClass =
+      'result-warning';
+
+
+    resultText =
+      '⚠ ALREADY CHECKED IN';
+
+  }
+
+
+  let serviceInfo =
+    '';
+
+
+  if (
+    data.registrationType ===
+    'SERVICE / LOADING'
+  ) {
+
+    serviceInfo =
+
+      field(
+        'Company / Service Provider',
+        data.company
+      ) +
+
+      field(
+        'Work Permit / Approval',
+        data.workPermit
+      ) +
+
+      field(
+        'Description',
+        data.description
+      );
+
+  }
+
+
+  let warning =
+    '';
+
+
+  if (
+    data.warning
+  ) {
+
+    warning = `
+
+      <div class="warning-card">
+
+        ${escapeHtml(
+          data.warning
+        )}
 
       </div>
 
     `;
 
-
-    showStatus(
-      validFormat
-        ? 'QR successfully scanned.'
-        : 'QR scanned, but it is not an ONE49 QR.',
-      validFormat
-        ? 'success'
-        : 'error'
-    );
+  }
 
 
-    resultCard.scrollIntoView({
+  resultContent.innerHTML = `
+
+    <div
+      class="main-result ${resultClass}">
+
+      ${resultText}
+
+    </div>
+
+
+    <div class="registration-id">
+
+      ${escapeHtml(
+        data.registrationId
+      )}
+
+    </div>
+
+
+    ${field(
+      'Registration Type',
+      data.registrationType
+    )}
+
+
+    ${field(
+      'Status',
+      data.status
+    )}
+
+
+    ${field(
+      'Resident Verification',
+      data.residentVerification
+    )}
+
+
+    ${field(
+      'Resident Unit',
+      'Tower ' +
+      data.tower +
+      ' / ' +
+      data.unit
+    )}
+
+
+    ${field(
+      data.registrationType ===
+      'SERVICE / LOADING'
+        ? 'Driver / Person in Charge'
+        : 'Visitor',
+      data.personName
+    )}
+
+
+    ${field(
+      'Contact Number',
+      data.personMobile
+    )}
+
+
+    ${serviceInfo}
+
+
+    ${field(
+      'Purpose',
+      data.purpose
+    )}
+
+
+    ${field(
+      'Visit / Service Date',
+      data.visitDate
+    )}
+
+
+    ${field(
+      'Expected Arrival',
+      data.arrival
+    )}
+
+
+    ${field(
+      'Entry / Vehicle Type',
+      data.vehicleType
+    )}
+
+
+    ${field(
+      'Vehicle Registration',
+      data.vehicle
+    )}
+
+
+    <div class="entrance">
+
+      ${escapeHtml(
+        data.entrance
+      )}
+
+    </div>
+
+
+    ${warning}
+
+  `;
+
+
+  resultCard
+    .scrollIntoView({
+
       behavior:
         'smooth',
 
       block:
         'start'
+
     });
 
-  }
+}
 
 
-  /************************************************************
-   * MANUAL SEARCH TEST
-   ************************************************************/
+/**************************************************************
+ * INVALID RESULT
+ **************************************************************/
 
-  document
-    .getElementById(
-      'manualButton'
-    )
-    .addEventListener(
-      'click',
-      manualSearch
-    );
+function showInvalidResult(
+  message,
+  registrationId
+) {
 
-
-  function manualSearch() {
-
-    const value =
-      document
-        .getElementById(
-          'manualInput'
-        )
-        .value
-        .trim()
-        .toUpperCase();
-
-
-    if (!value) {
-
-      showStatus(
-        'Enter a Registration ID or vehicle plate.',
-        'error'
-      );
-
-      return;
-
-    }
-
-
-    resultCard.classList.remove(
+  resultCard
+    .classList
+    .remove(
       'hidden'
     );
 
 
-    resultContent.innerHTML = `
+  resultContent.innerHTML = `
 
-      <div
-        class="result-title"
-        style="color:#172B4D">
+    <div
+      class="main-result result-invalid">
 
-        Manual Search Test
+      ✕ QR NOT VALID
+
+    </div>
+
+
+    ${
+      registrationId
+        ? `
+          <div class="registration-id">
+            ${escapeHtml(
+              registrationId
+            )}
+          </div>
+        `
+        : ''
+    }
+
+
+    <div
+      class="status-box status-error">
+
+      ${escapeHtml(
+        message
+      )}
+
+    </div>
+
+  `;
+
+}
+
+
+/**************************************************************
+ * FIELD
+ **************************************************************/
+
+function field(
+  label,
+  value
+) {
+
+  return `
+
+    <div class="row">
+
+      <div class="label">
+
+        ${escapeHtml(
+          label
+        )}
 
       </div>
 
+      <div class="value">
 
-      <div class="row">
-
-        <div class="label">
-          Search Value
-        </div>
-
-        <div class="value">
-          ${escapeHtml(value)}
-        </div>
+        ${escapeHtml(
+          value || '-'
+        )}
 
       </div>
 
+    </div>
 
-      <div class="row">
+  `;
 
-        <div class="label">
-          Status
-        </div>
+}
 
-        <div class="value">
-          Backend connection will be enabled in the next step.
-        </div>
 
-      </div>
+/**************************************************************
+ * SCANNER STATUS
+ **************************************************************/
 
-    `;
+function showScannerStatus(
+  message,
+  type
+) {
+
+  scannerStatus.className =
+    'status-box';
+
+
+  if (
+    type ===
+    'success'
+  ) {
+
+    scannerStatus
+      .classList
+      .add(
+        'status-success'
+      );
 
   }
 
 
-  /************************************************************
-   * STATUS
-   ************************************************************/
-
-  function showStatus(
-    message,
-    type
+  if (
+    type ===
+    'error'
   ) {
 
-    scannerStatus.className =
-      'scanner-status';
-
-
-    if (
-      type ===
-      'success'
-    ) {
-
-      scannerStatus.classList.add(
-        'success'
+    scannerStatus
+      .classList
+      .add(
+        'status-error'
       );
 
-    }
+  }
 
 
-    if (
-      type ===
-      'error'
-    ) {
+  if (
+    type ===
+    'warning'
+  ) {
 
-      scannerStatus.classList.add(
-        'error'
+    scannerStatus
+      .classList
+      .add(
+        'status-warning'
       );
 
-    }
+  }
 
 
-    scannerStatus.textContent =
-      message;
+  scannerStatus.textContent =
+    message;
 
 
-    scannerStatus.classList.remove(
+  scannerStatus
+    .classList
+    .remove(
       'hidden'
     );
 
-  }
+}
 
 
-  /************************************************************
-   * ESCAPE HTML
-   ************************************************************/
+/**************************************************************
+ * API CONFIG
+ **************************************************************/
 
-  function escapeHtml(
-    value
-  ) {
+function apiConfigured() {
 
-    return String(
-      value || ''
+  return (
+    ONE49_API_URL &&
+    ONE49_API_URL.startsWith(
+      'https://script.google.com/'
+    ) &&
+    !ONE49_API_URL.includes(
+      'PASTE_YOUR'
     )
-      .replace(
-        /&/g,
-        '&amp;'
-      )
-      .replace(
-        /</g,
-        '&lt;'
-      )
-      .replace(
-        />/g,
-        '&gt;'
-      )
-      .replace(
-        /"/g,
-        '&quot;'
-      )
-      .replace(
-        /'/g,
-        '&#039;'
-      );
+  );
 
-  }
+}
+
+
+/**************************************************************
+ * ESCAPE
+ **************************************************************/
+
+function escapeHtml(
+  value
+) {
+
+  return String(
+    value || ''
+  )
+    .replace(
+      /&/g,
+      '&amp;'
+    )
+    .replace(
+      /</g,
+      '&lt;'
+    )
+    .replace(
+      />/g,
+      '&gt;'
+    )
+    .replace(
+      /"/g,
+      '&quot;'
+    )
+    .replace(
+      /'/g,
+      '&#039;'
+    );
+
+}
 
 </script>
 
