@@ -1,1336 +1,347 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta
-  name="viewport"
-  content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-
-<meta
-  name="theme-color"
-  content="#172B4D">
-
-<title>
-ONE49 Security Portal
-</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="theme-color" content="#172B4D">
+<title>ONE49 Security Portal</title>
 <script src="https://unpkg.com/html5-qrcode"></script>
-
-
 <style>
-
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background: #f3f4f6;
-  color: #1f2937;
-}
-
-.header {
-  background: #172B4D;
-  color: white;
-  text-align: center;
-  padding: 19px 15px;
-}
-
-.header h1 {
-  margin: 0;
-  font-size: 22px;
-}
-
-.header p {
-  margin: 5px 0 0;
-  font-size: 13px;
-  opacity: .9;
-}
-
-.version {
-  margin-top: 5px;
-  font-size: 11px;
-  opacity: .65;
-}
-
-.container {
-  width: 100%;
-  max-width: 620px;
-  margin: auto;
-  padding: 16px;
-}
-
-.card {
-  background: white;
-  border-radius: 14px;
-  padding: 18px;
-  margin-bottom: 15px;
-  box-shadow: 0 2px 8px rgba(0,0,0,.08);
-}
-
-.title {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 6px;
-}
-
-.description {
-  color: #6b7280;
-  font-size: 13px;
-  line-height: 1.5;
-  margin-bottom: 15px;
-}
-
-label {
-  display: block;
-  font-size: 12px;
-  font-weight: bold;
-  margin-bottom: 6px;
-}
-
-input,
-select {
-  width: 100%;
-  height: 50px;
-  border: 1px solid #d1d5db;
-  border-radius: 9px;
-  padding: 0 13px;
-  font-size: 16px;
-  margin-bottom: 15px;
-  background: white;
-}
-
-button {
-  width: 100%;
-  min-height: 52px;
-  border: 0;
-  border-radius: 10px;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-button:disabled {
-  opacity: .55;
-}
-
-.primary {
-  background: #0F766E;
-  color: white;
-}
-
-.secondary {
-  background: #172B4D;
-  color: white;
-}
-
-.danger {
-  background: #991B1B;
-  color: white;
-  margin-top: 10px;
-}
-
-.hidden {
-  display: none !important;
-}
-
-#reader {
-  width: 100%;
-  margin-top: 15px;
-  overflow: hidden;
-  border-radius: 12px;
-}
-
-.status {
-  margin-top: 12px;
-  padding: 13px;
-  border-radius: 9px;
-  text-align: center;
-  font-size: 14px;
-  font-weight: bold;
-  background: #eaf2ff;
-  color: #172B4D;
-}
-
-.success {
-  background: #dcfce7;
-  color: #166534;
-}
-
-.error {
-  background: #fee2e2;
-  color: #991b1b;
-}
-
-.officer {
-  background: #eaf2ff;
-  border-radius: 10px;
-  padding: 12px;
-  margin-bottom: 15px;
-  font-size: 13px;
-  color: #172B4D;
-  text-align: center;
-  font-weight: bold;
-}
-
-.divider {
-  display: flex;
-  align-items: center;
-  margin: 22px 0;
-  color: #9ca3af;
-  font-size: 12px;
-  font-weight: bold;
-}
-
-.divider::before,
-.divider::after {
-  content: "";
-  flex: 1;
-  height: 1px;
-  background: #e5e7eb;
-}
-
-.divider span {
-  padding: 0 12px;
-}
-
-.manualBox {
-  background: #f9fafb;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  padding: 15px;
-}
-
-.manualTitle {
-  font-weight: bold;
-  color: #172B4D;
-  margin-bottom: 5px;
-}
-
-.example {
-  font-size: 11px;
-  color: #6b7280;
-  margin-bottom: 12px;
-}
-
-.logout {
-  display: block;
-  text-align: center;
-  margin-top: 16px;
-  color: #991b1b;
-  text-decoration: none;
-  font-size: 13px;
-  font-weight: bold;
-}
-
-.footer {
-  text-align: center;
-  color: #9ca3af;
-  font-size: 11px;
-  margin: 15px 0 25px;
-}
-
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f3f4f6;color:#1f2937}
+.header{background:#172B4D;color:white;text-align:center;padding:19px 15px}
+.header h1{margin:0;font-size:22px}
+.header p{margin:5px 0 0;font-size:13px;opacity:.9}
+.version{margin-top:5px;font-size:11px;opacity:.65}
+.container{width:100%;max-width:620px;margin:auto;padding:16px}
+.card{background:white;border-radius:14px;padding:18px;margin-bottom:15px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.title{font-size:18px;font-weight:bold;margin-bottom:6px}
+.description{color:#6b7280;font-size:13px;line-height:1.5;margin-bottom:15px}
+label{display:block;font-size:12px;font-weight:bold;margin-bottom:6px}
+input,select{width:100%;height:50px;border:1px solid #d1d5db;border-radius:9px;padding:0 13px;font-size:16px;margin-bottom:15px;background:white}
+button{width:100%;min-height:52px;border:0;border-radius:10px;font-size:16px;font-weight:bold;cursor:pointer}
+button:disabled{opacity:.55}
+.primary{background:#0F766E;color:white}
+.secondary{background:#172B4D;color:white}
+.returnButton{background:#1D4ED8;color:white}
+.danger{background:#991B1B;color:white;margin-top:10px}
+.hidden{display:none!important}
+#reader{width:100%;margin-top:15px;overflow:hidden;border-radius:12px}
+.status{margin-top:12px;padding:13px;border-radius:9px;text-align:center;font-size:14px;font-weight:bold;background:#eaf2ff;color:#172B4D}
+.success{background:#dcfce7;color:#166534}
+.error{background:#fee2e2;color:#991b1b}
+.officer{background:#eaf2ff;border-radius:10px;padding:12px;margin-bottom:15px;font-size:13px;color:#172B4D;text-align:center;font-weight:bold}
+.divider{display:flex;align-items:center;margin:22px 0;color:#9ca3af;font-size:12px;font-weight:bold}
+.divider::before,.divider::after{content:"";flex:1;height:1px;background:#e5e7eb}
+.divider span{padding:0 12px}
+.box{background:#f9fafb;border:1px solid #e5e7eb;border-radius:12px;padding:15px}
+.boxTitle{font-weight:bold;color:#172B4D;margin-bottom:5px}
+.example{font-size:11px;color:#6b7280;margin-bottom:12px}
+.returnBox{background:#eff6ff;border-color:#bfdbfe}
+.returnNote{font-size:12px;color:#1e40af;line-height:1.45;margin-bottom:12px}
+.logout{display:block;text-align:center;margin-top:16px;color:#991b1b;text-decoration:none;font-size:13px;font-weight:bold}
+.footer{text-align:center;color:#9ca3af;font-size:11px;margin:15px 0 25px}
 </style>
-
 </head>
-
-
 <body>
-
-
 <div class="header">
-
-  <h1>
-    ONE49 Security Portal
-  </h1>
-
-  <p>
-    Visitor & Service Access Verification
-  </p>
-
-  <div class="version">
-    Security Portal V2.8
-  </div>
-
+  <h1>ONE49 Security Portal</h1>
+  <p>Visitor & Service Access Verification</p>
+  <div class="version">Security Portal V3.0</div>
 </div>
-
 
 <div class="container">
 
+  <div id="loginCard" class="card hidden">
+    <div class="title">Security Officer Login</div>
+    <div class="description">Authorized security personnel only.</div>
 
-  <!-- LOGIN -->
+    <form id="loginForm" method="POST">
+      <input type="hidden" name="action" value="login">
 
-  <div
-    id="loginCard"
-    class="card hidden">
+      <label>Officer ID</label>
+      <input type="text" name="officerId" placeholder="SEC001" autocomplete="username" required>
 
+      <label>PIN</label>
+      <input type="password" name="pin" inputmode="numeric" pattern="[0-9]*" maxlength="6" placeholder="6-digit PIN" autocomplete="current-password" required>
 
-    <div class="title">
-
-      Security Officer Login
-
-    </div>
-
-
-    <div class="description">
-
-      Authorized security personnel only.
-
-    </div>
-
-
-    <form
-      id="loginForm"
-      method="POST">
-
-
-      <input
-        type="hidden"
-        name="action"
-        value="login">
-
-
-      <label>
-        Officer ID
-      </label>
-
-
-      <input
-        type="text"
-        name="officerId"
-        placeholder="SEC001"
-        autocomplete="username"
-        required>
-
-
-      <label>
-        PIN
-      </label>
-
-
-      <input
-        type="password"
-        name="pin"
-        inputmode="numeric"
-        pattern="[0-9]*"
-        maxlength="6"
-        placeholder="6-digit PIN"
-        autocomplete="current-password"
-        required>
-
-
-      <label>
-        Guard Post
-      </label>
-
-
-      <select
-        name="guardPost"
-        required>
-
-
-        <option value="">
-
-          Select Guard Post
-
-        </option>
-
-
-        <option value="LEVEL 4 — MAIN ENTRANCE">
-
-          Level 4 — Main Entrance
-
-        </option>
-
-
-        <option value="LEVEL 1 — SERVICE / LOADING">
-
-          Level 1 — Service / Loading
-
-        </option>
-
-
+      <label>Guard Post</label>
+      <select name="guardPost" required>
+        <option value="">Select Guard Post</option>
+        <option value="LEVEL 4 — MAIN ENTRANCE">Level 4 — Main Entrance</option>
+        <option value="LEVEL 1 — SERVICE / LOADING">Level 1 — Service / Loading</option>
       </select>
 
-
-      <button
-        class="primary"
-        type="submit">
-
-        🔐 Login
-
-      </button>
-
-
+      <button class="primary" type="submit">🔐 Login</button>
     </form>
-
-
   </div>
 
+  <div id="scannerCard" class="card hidden">
+    <div class="officer">✓ Security Officer Authenticated</div>
 
-  <!-- SECURITY PORTAL -->
-
-  <div
-    id="scannerCard"
-    class="card hidden">
-
-
-    <div class="officer">
-
-      ✓ Security Officer Authenticated
-
-    </div>
-
-
-    <div class="title">
-
-      Visitor Verification
-
-    </div>
-
-
+    <div class="title">Visitor Verification</div>
     <div class="description">
-
-      Scan the secure ONE49 QR code or use
-      Manual Search when the visitor cannot provide the QR.
-
+      Scan the secure ONE49 QR code or use Manual Registration Search when the visitor cannot provide the QR.
     </div>
 
+    <button id="startButton" class="primary" type="button">📷 Start Live QR Scanner</button>
+    <div id="reader" class="hidden"></div>
+    <button id="stopButton" class="danger hidden" type="button">Stop Scanner</button>
+    <div id="status" class="status hidden"></div>
 
-    <!-- QR SCANNER -->
+    <div class="divider"><span>OR</span></div>
 
+    <div class="box">
+      <div class="boxTitle">⌨️ Manual Registration Search</div>
+      <div class="example">Example: V2608220001 or S2608220001</div>
 
-    <button
-      id="startButton"
-      class="primary"
-      type="button">
+      <form id="manualForm" method="POST">
+        <input type="hidden" name="action" value="manualSearch">
+        <input id="manualSession" type="hidden" name="session">
 
-      📷 Start Live QR Scanner
+        <label>Registration ID</label>
+        <input id="registrationId" type="text" name="rid" placeholder="Enter Registration ID" autocomplete="off" autocapitalize="characters" required>
 
-    </button>
-
-
-    <div
-      id="reader"
-      class="hidden">
-    </div>
-
-
-    <button
-      id="stopButton"
-      class="danger hidden"
-      type="button">
-
-      Stop Scanner
-
-    </button>
-
-
-    <div
-      id="status"
-      class="status hidden">
-    </div>
-
-
-    <!-- DIVIDER -->
-
-
-    <div class="divider">
-
-      <span>
-        OR
-      </span>
-
-    </div>
-
-
-    <!-- MANUAL SEARCH -->
-
-
-    <div class="manualBox">
-
-
-      <div class="manualTitle">
-
-        ⌨️ Manual Registration Search
-
-      </div>
-
-
-      <div class="example">
-
-        Example: V2608220001 or S2608220001
-
-      </div>
-
-
-      <form
-        id="manualForm"
-        method="POST">
-
-
-        <input
-          type="hidden"
-          name="action"
-          value="manualSearch">
-
-
-        <input
-          id="manualSession"
-          type="hidden"
-          name="session">
-
-
-        <label>
-          Registration ID
-        </label>
-
-
-        <input
-          id="registrationId"
-          type="text"
-          name="rid"
-          placeholder="Enter Registration ID"
-          autocomplete="off"
-          autocapitalize="characters"
-          required>
-
-
-        <button
-          class="secondary"
-          type="submit">
-
-          🔎 Search Registration
-
-        </button>
-
-
+        <button class="secondary" type="submit">🔎 Search Registration</button>
       </form>
-
-
     </div>
 
+    <div class="divider"><span>EXIT</span></div>
 
-    <a
-      id="logoutButton"
-      class="logout"
-      href="#">
+    <div class="box returnBox">
+      <div class="boxTitle">↩️ Pass Return / Check-Out</div>
+      <div class="returnNote">
+        No visitor QR is required at exit. Enter the physical pass returned by the visitor / driver.
+      </div>
+      <div class="example">Example: VP-001 or SL-001</div>
 
-      Log Out
+      <form id="passReturnForm" method="POST">
+        <input type="hidden" name="action" value="passReturnLookup">
+        <input id="passReturnSession" type="hidden" name="session">
 
-    </a>
+        <label>Physical Pass Serial Number</label>
+        <input id="passSerial" type="text" name="passSerial" placeholder="VP-001 / SL-001" autocomplete="off" autocapitalize="characters" required>
 
+        <button class="returnButton" type="submit">↩ Find Active Pass</button>
+      </form>
+    </div>
 
+    <a id="logoutButton" class="logout" href="#">Log Out</a>
   </div>
 
-
-  <div class="footer">
-
-    ONE49 Residence Security System
-
-  </div>
-
-
+  <div class="footer">ONE49 Residence Security System</div>
 </div>
 
-
 <script>
+const ONE49_BACKEND_URL = 'https://script.google.com/macros/s/AKfycbxoTQgBFcrqzJ3Xoi6Tzb-EUGRaYRpgvSsexBfsA3X_8uIf3IA7qW7ed296l-VPuQFZ/exec';
 
+let scanner = null;
+let scannerActive = false;
+let processing = false;
 
-/**************************************************************
- * ONE49 SECURITY PORTAL FRONTEND V2.8
- **************************************************************/
+const params = new URLSearchParams(window.location.search);
+const session = String(params.get('session') || '').trim();
 
+const loginCard = document.getElementById('loginCard');
+const scannerCard = document.getElementById('scannerCard');
+const loginForm = document.getElementById('loginForm');
+const manualForm = document.getElementById('manualForm');
+const passReturnForm = document.getElementById('passReturnForm');
+const manualSession = document.getElementById('manualSession');
+const passReturnSession = document.getElementById('passReturnSession');
+const registrationId = document.getElementById('registrationId');
+const passSerial = document.getElementById('passSerial');
+const startButton = document.getElementById('startButton');
+const stopButton = document.getElementById('stopButton');
+const reader = document.getElementById('reader');
+const statusBox = document.getElementById('status');
+const logoutButton = document.getElementById('logoutButton');
 
-const ONE49_BACKEND_URL =
-  'https://script.google.com/macros/s/AKfycbxoTQgBFcrqzJ3Xoi6Tzb-EUGRaYRpgvSsexBfsA3X_8uIf3IA7qW7ed296l-VPuQFZ/exec';
+loginForm.action = ONE49_BACKEND_URL;
+manualForm.action = ONE49_BACKEND_URL;
+passReturnForm.action = ONE49_BACKEND_URL;
 
-
-let scanner =
-  null;
-
-
-let scannerActive =
-  false;
-
-
-let processing =
-  false;
-
-
-/**************************************************************
- * URL PARAMETERS
- **************************************************************/
-
-const params =
-  new URLSearchParams(
-    window.location.search
-  );
-
-
-const session =
-  String(
-    params.get('session') || ''
-  ).trim();
-
-
-/**************************************************************
- * ELEMENTS
- **************************************************************/
-
-const loginCard =
-  document.getElementById(
-    'loginCard'
-  );
-
-
-const scannerCard =
-  document.getElementById(
-    'scannerCard'
-  );
-
-
-const loginForm =
-  document.getElementById(
-    'loginForm'
-  );
-
-
-const manualForm =
-  document.getElementById(
-    'manualForm'
-  );
-
-
-const manualSession =
-  document.getElementById(
-    'manualSession'
-  );
-
-
-const registrationId =
-  document.getElementById(
-    'registrationId'
-  );
-
-
-const startButton =
-  document.getElementById(
-    'startButton'
-  );
-
-
-const stopButton =
-  document.getElementById(
-    'stopButton'
-  );
-
-
-const reader =
-  document.getElementById(
-    'reader'
-  );
-
-
-const statusBox =
-  document.getElementById(
-    'status'
-  );
-
-
-const logoutButton =
-  document.getElementById(
-    'logoutButton'
-  );
-
-
-/**************************************************************
- * SET FORM ACTIONS
- **************************************************************/
-
-loginForm.action =
-  ONE49_BACKEND_URL;
-
-
-manualForm.action =
-  ONE49_BACKEND_URL;
-
-
-/**************************************************************
- * INITIAL PAGE
- **************************************************************/
-
-if (
-  session
-) {
-
-  scannerCard
-    .classList
-    .remove(
-      'hidden'
-    );
-
-
-  manualSession.value =
-    session;
-
-
-  logoutButton.href =
-    ONE49_BACKEND_URL +
-    '?logoutNotUsed=1';
-
+if (session) {
+  scannerCard.classList.remove('hidden');
+  manualSession.value = session;
+  passReturnSession.value = session;
+} else {
+  loginCard.classList.remove('hidden');
 }
 
-else {
+logoutButton.addEventListener('click', function(event) {
+  event.preventDefault();
 
-  loginCard
-    .classList
-    .remove(
-      'hidden'
-    );
+  const form = document.createElement('form');
+  form.method = 'POST';
+  form.action = ONE49_BACKEND_URL;
 
-}
+  addHidden(form, 'action', 'logout');
+  addHidden(form, 'session', session);
 
+  document.body.appendChild(form);
+  form.submit();
+});
 
-/**************************************************************
- * LOGOUT
- *
- * Uses POST because that is the stable path.
- **************************************************************/
+registrationId.addEventListener('input', function() {
+  registrationId.value = String(registrationId.value || '')
+    .toUpperCase()
+    .replace(/[^A-Z0-9]/g, '');
+});
 
-logoutButton
-  .addEventListener(
-    'click',
-    function(event) {
+passSerial.addEventListener('input', function() {
+  let value = String(passSerial.value || '')
+    .toUpperCase()
+    .replace(/[–—]/g, '-')
+    .replace(/\s+/g, '')
+    .replace(/[^A-Z0-9-]/g, '');
 
-      event.preventDefault();
+  const compact = value.replace(/-/g, '');
 
+  if (/^VP\d+$/.test(compact)) {
+    value = 'VP-' + compact.substring(2);
+  } else if (/^SL\d+$/.test(compact)) {
+    value = 'SL-' + compact.substring(2);
+  }
 
-      const form =
-        document.createElement(
-          'form'
-        );
+  passSerial.value = value;
+});
 
-
-      form.method =
-        'POST';
-
-
-      form.action =
-        ONE49_BACKEND_URL;
-
-
-      addHidden(
-        form,
-        'action',
-        'logout'
-      );
-
-
-      addHidden(
-        form,
-        'session',
-        session
-      );
-
-
-      document.body
-        .appendChild(
-          form
-        );
-
-
-      form.submit();
-
-    }
-  );
-
-
-/**************************************************************
- * MANUAL SEARCH NORMALIZATION
- **************************************************************/
-
-registrationId
-  .addEventListener(
-    'input',
-    function() {
-
-      registrationId.value =
-        String(
-          registrationId.value || ''
-        )
-          .toUpperCase()
-          .replace(
-            /[^A-Z0-9]/g,
-            ''
-          );
-
-    }
-  );
-
-
-/**************************************************************
- * START QR SCANNER
- **************************************************************/
-
-startButton
-  .addEventListener(
-    'click',
-    startScanner
-  );
-
+startButton.addEventListener('click', startScanner);
+stopButton.addEventListener('click', stopScanner);
 
 async function startScanner() {
+  if (scannerActive) return;
 
-  if (
-    scannerActive
-  ) {
-
-    return;
-
-  }
-
-
-  processing =
-    false;
-
-
-  startButton.disabled =
-    true;
-
-
-  reader
-    .classList
-    .remove(
-      'hidden'
-    );
-
-
-  stopButton
-    .classList
-    .remove(
-      'hidden'
-    );
-
-
-  showStatus(
-    'Starting camera...',
-    ''
-  );
-
+  processing = false;
+  startButton.disabled = true;
+  reader.classList.remove('hidden');
+  stopButton.classList.remove('hidden');
+  showStatus('Starting camera...', '');
 
   try {
+    scanner = new Html5Qrcode('reader');
+    const cameras = await Html5Qrcode.getCameras();
 
-    scanner =
-      new Html5Qrcode(
-        'reader'
-      );
-
-
-    const cameras =
-      await Html5Qrcode
-        .getCameras();
-
-
-    if (
-      !cameras ||
-      cameras.length === 0
-    ) {
-
-      throw new Error(
-        'No camera found.'
-      );
-
+    if (!cameras || cameras.length === 0) {
+      throw new Error('No camera found.');
     }
 
+    let cameraId = cameras[0].id;
 
-    let cameraId =
-      cameras[0].id;
+    const rear = cameras.find(function(camera) {
+      const label = String(camera.label || '').toLowerCase();
+      return label.includes('back') || label.includes('rear') || label.includes('environment');
+    });
 
-
-    const rear =
-      cameras.find(
-        function(camera) {
-
-          const label =
-            String(
-              camera.label || ''
-            )
-              .toLowerCase();
-
-
-          return (
-            label.includes('back') ||
-            label.includes('rear') ||
-            label.includes('environment')
-          );
-
-        }
-      );
-
-
-    if (rear) {
-
-      cameraId =
-        rear.id;
-
-    }
-
+    if (rear) cameraId = rear.id;
 
     await scanner.start(
-
       cameraId,
-
       {
-
-        fps:
-          12,
-
-        qrbox:
-          function(
-            width,
-            height
-          ) {
-
-            const size =
-              Math.floor(
-                Math.min(
-                  width,
-                  height
-                ) *
-                .72
-              );
-
-
-            return {
-
-              width:
-                size,
-
-              height:
-                size
-
-            };
-
-          }
-
+        fps: 12,
+        qrbox: function(width, height) {
+          const size = Math.floor(Math.min(width, height) * .72);
+          return { width: size, height: size };
+        }
       },
-
       qrSuccess,
-
       function() {}
-
     );
 
+    scannerActive = true;
+    showStatus('Camera ready — scan ONE49 QR.', 'success');
 
-    scannerActive =
-      true;
-
-
-    showStatus(
-      'Camera ready — scan ONE49 QR.',
-      'success'
-    );
-
+  } catch (error) {
+    scanner = null;
+    scannerActive = false;
+    startButton.disabled = false;
+    reader.classList.add('hidden');
+    stopButton.classList.add('hidden');
+    showStatus('Camera error: ' + (error.message || String(error)), 'error');
   }
-
-  catch (error) {
-
-    scanner =
-      null;
-
-
-    scannerActive =
-      false;
-
-
-    startButton.disabled =
-      false;
-
-
-    reader
-      .classList
-      .add(
-        'hidden'
-      );
-
-
-    stopButton
-      .classList
-      .add(
-        'hidden'
-      );
-
-
-    showStatus(
-      'Camera error: ' +
-      (
-        error.message ||
-        String(error)
-      ),
-      'error'
-    );
-
-  }
-
 }
 
+async function qrSuccess(decodedText) {
+  if (processing) return;
+  processing = true;
 
-/**************************************************************
- * QR SUCCESS
- **************************************************************/
-
-async function qrSuccess(
-  decodedText
-) {
-
-  if (
-    processing
-  ) {
-
-    return;
-
-  }
-
-
-  processing =
-    true;
-
-
-  if (
-    navigator.vibrate
-  ) {
-
-    navigator.vibrate(
-      100
-    );
-
-  }
-
+  if (navigator.vibrate) navigator.vibrate(100);
 
   await stopScanner();
 
+  const qr = String(decodedText || '').trim();
+  const parts = qr.split('|');
 
-  const qr =
-    String(
-      decodedText || ''
-    ).trim();
-
-
-  const parts =
-    qr.split('|');
-
-
-  if (
-    parts.length !== 3 ||
-    String(
-      parts[0]
-    )
-      .trim()
-      .toUpperCase() !==
-      'ONE49'
-  ) {
-
-    processing =
-      false;
-
-
-    showStatus(
-      'Invalid ONE49 QR Code.',
-      'error'
-    );
-
-
+  if (parts.length !== 3 || String(parts[0]).trim().toUpperCase() !== 'ONE49') {
+    processing = false;
+    showStatus('Invalid ONE49 QR Code.', 'error');
     return;
-
   }
 
+  const rid = normalizeSecure(parts[1]);
+  const token = normalizeSecure(parts[2]);
 
-  const rid =
-    normalizeSecure(
-      parts[1]
-    );
-
-
-  const token =
-    normalizeSecure(
-      parts[2]
-    );
-
-
-  if (
-    !rid ||
-    !token
-  ) {
-
-    processing =
-      false;
-
-
-    showStatus(
-      'Invalid ONE49 QR Code.',
-      'error'
-    );
-
-
+  if (!rid || !token) {
+    processing = false;
+    showStatus('Invalid ONE49 QR Code.', 'error');
     return;
-
   }
 
-
-  submitQrVerification(
-    rid,
-    token
-  );
-
+  submitQrVerification(rid, token);
 }
 
+function submitQrVerification(rid, token) {
+  const form = document.createElement('form');
+  form.method = 'POST';
+  form.action = ONE49_BACKEND_URL;
 
-/**************************************************************
- * QR POST
- **************************************************************/
+  addHidden(form, 'action', 'verify');
+  addHidden(form, 'session', session);
+  addHidden(form, 'rid', rid);
+  addHidden(form, 'token', token);
 
-function submitQrVerification(
-  rid,
-  token
-) {
-
-  const form =
-    document.createElement(
-      'form'
-    );
-
-
-  form.method =
-    'POST';
-
-
-  form.action =
-    ONE49_BACKEND_URL;
-
-
-  addHidden(
-    form,
-    'action',
-    'verify'
-  );
-
-
-  addHidden(
-    form,
-    'session',
-    session
-  );
-
-
-  addHidden(
-    form,
-    'rid',
-    rid
-  );
-
-
-  addHidden(
-    form,
-    'token',
-    token
-  );
-
-
-  document.body
-    .appendChild(
-      form
-    );
-
-
+  document.body.appendChild(form);
   form.submit();
-
 }
 
-
-/**************************************************************
- * HIDDEN INPUT
- **************************************************************/
-
-function addHidden(
-  form,
-  name,
-  value
-) {
-
-  const input =
-    document.createElement(
-      'input'
-    );
-
-
-  input.type =
-    'hidden';
-
-
-  input.name =
-    name;
-
-
-  input.value =
-    value;
-
-
-  form.appendChild(
-    input
-  );
-
+function addHidden(form, name, value) {
+  const input = document.createElement('input');
+  input.type = 'hidden';
+  input.name = name;
+  input.value = value;
+  form.appendChild(input);
 }
-
-
-/**************************************************************
- * STOP SCANNER
- **************************************************************/
-
-stopButton
-  .addEventListener(
-    'click',
-    stopScanner
-  );
-
 
 async function stopScanner() {
-
   try {
-
-    if (
-      scanner &&
-      scannerActive
-    ) {
-
+    if (scanner && scannerActive) {
       await scanner.stop();
-
-
-      try {
-
-        scanner.clear();
-
-      }
-
-      catch (error) {}
-
+      try { scanner.clear(); } catch (error) {}
     }
+  } catch (error) {}
 
-  }
-
-  catch (error) {}
-
-
-  scanner =
-    null;
-
-
-  scannerActive =
-    false;
-
-
-  startButton.disabled =
-    false;
-
-
-  reader
-    .classList
-    .add(
-      'hidden'
-    );
-
-
-  stopButton
-    .classList
-    .add(
-      'hidden'
-    );
-
+  scanner = null;
+  scannerActive = false;
+  startButton.disabled = false;
+  reader.classList.add('hidden');
+  stopButton.classList.add('hidden');
 }
 
-
-/**************************************************************
- * NORMALIZE
- **************************************************************/
-
-function normalizeSecure(
-  value
-) {
-
-  return String(
-    value || ''
-  )
+function normalizeSecure(value) {
+  return String(value || '')
     .trim()
     .toUpperCase()
-    .replace(
-      /[^A-Z0-9]/g,
-      ''
-    );
-
+    .replace(/[^A-Z0-9]/g, '');
 }
 
-
-/**************************************************************
- * STATUS
- **************************************************************/
-
-function showStatus(
-  message,
-  type
-) {
-
-  statusBox.className =
-    'status';
-
-
-  if (
-    type ===
-    'success'
-  ) {
-
-    statusBox
-      .classList
-      .add(
-        'success'
-      );
-
-  }
-
-
-  if (
-    type ===
-    'error'
-  ) {
-
-    statusBox
-      .classList
-      .add(
-        'error'
-      );
-
-  }
-
-
-  statusBox.textContent =
-    message;
-
-
-  statusBox
-    .classList
-    .remove(
-      'hidden'
-    );
-
+function showStatus(message, type) {
+  statusBox.className = 'status';
+  if (type === 'success') statusBox.classList.add('success');
+  if (type === 'error') statusBox.classList.add('error');
+  statusBox.textContent = message;
+  statusBox.classList.remove('hidden');
 }
-
-
 </script>
-
 </body>
-
 </html>
