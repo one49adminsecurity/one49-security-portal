@@ -39,6 +39,8 @@ button:disabled{opacity:.55}
 .example{font-size:11px;color:#6b7280;margin-bottom:12px}
 .returnBox{background:#eff6ff;border-color:#bfdbfe}
 .returnNote{font-size:12px;color:#1e40af;line-height:1.45;margin-bottom:12px}
+.motorcycleBox{background:#f0fdfa;border-color:#99f6e4}
+.motorcycleNote{font-size:12px;color:#0f766e;line-height:1.45;margin-bottom:12px}
 .logout{display:block;text-align:center;margin-top:16px;color:#991b1b;text-decoration:none;font-size:13px;font-weight:bold}
 .footer{text-align:center;color:#9ca3af;font-size:11px;margin:15px 0 25px}
 </style>
@@ -47,7 +49,7 @@ button:disabled{opacity:.55}
 <div class="header">
   <h1>ONE49 Security Portal</h1>
   <p>Visitor & Service Access Verification</p>
-  <div class="version">Security Portal V3.0</div>
+  <div class="version">Security Portal V3.1 — Motorcycle No-Pass</div>
 </div>
 
 <div class="container">
@@ -108,6 +110,26 @@ button:disabled{opacity:.55}
 
     <div class="divider"><span>EXIT</span></div>
 
+    <div class="box motorcycleBox">
+      <div class="boxTitle">🏍 Motorcycle / No-Pass Check-Out</div>
+      <div class="motorcycleNote">
+        Visitor motorcycles do not use a physical pass. Enter the motorcycle registration number recorded at check-in.
+      </div>
+      <div class="example">Example: JQR1234</div>
+
+      <form id="motorcycleForm" method="POST">
+        <input type="hidden" name="action" value="motorcycleLookup">
+        <input id="motorcycleSession" type="hidden" name="session">
+
+        <label>Motorcycle Registration Number</label>
+        <input id="motorcyclePlate" type="text" name="vehicleRegistration" placeholder="JQR1234" autocomplete="off" autocapitalize="characters" required>
+
+        <button class="primary" type="submit">🏍 Find Checked-In Motorcycle</button>
+      </form>
+    </div>
+
+    <div class="divider"><span>OR</span></div>
+
     <div class="box returnBox">
       <div class="boxTitle">↩️ Pass Return / Check-Out</div>
       <div class="returnNote">
@@ -146,10 +168,13 @@ const loginCard = document.getElementById('loginCard');
 const scannerCard = document.getElementById('scannerCard');
 const loginForm = document.getElementById('loginForm');
 const manualForm = document.getElementById('manualForm');
+const motorcycleForm = document.getElementById('motorcycleForm');
 const passReturnForm = document.getElementById('passReturnForm');
 const manualSession = document.getElementById('manualSession');
+const motorcycleSession = document.getElementById('motorcycleSession');
 const passReturnSession = document.getElementById('passReturnSession');
 const registrationId = document.getElementById('registrationId');
+const motorcyclePlate = document.getElementById('motorcyclePlate');
 const passSerial = document.getElementById('passSerial');
 const startButton = document.getElementById('startButton');
 const stopButton = document.getElementById('stopButton');
@@ -159,11 +184,13 @@ const logoutButton = document.getElementById('logoutButton');
 
 loginForm.action = ONE49_BACKEND_URL;
 manualForm.action = ONE49_BACKEND_URL;
+motorcycleForm.action = ONE49_BACKEND_URL;
 passReturnForm.action = ONE49_BACKEND_URL;
 
 if (session) {
   scannerCard.classList.remove('hidden');
   manualSession.value = session;
+  motorcycleSession.value = session;
   passReturnSession.value = session;
 } else {
   loginCard.classList.remove('hidden');
@@ -185,6 +212,12 @@ logoutButton.addEventListener('click', function(event) {
 
 registrationId.addEventListener('input', function() {
   registrationId.value = String(registrationId.value || '')
+    .toUpperCase()
+    .replace(/[^A-Z0-9]/g, '');
+});
+
+motorcyclePlate.addEventListener('input', function() {
+  motorcyclePlate.value = String(motorcyclePlate.value || '')
     .toUpperCase()
     .replace(/[^A-Z0-9]/g, '');
 });
