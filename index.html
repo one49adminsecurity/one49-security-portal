@@ -31,6 +31,8 @@ button:disabled{opacity:.55}
 .success{background:#dcfce7;color:#166534}
 .error{background:#fee2e2;color:#991b1b}
 .officer{background:#eaf2ff;border-radius:10px;padding:12px;margin-bottom:15px;font-size:13px;color:#172B4D;text-align:center;font-weight:bold}
+.officerIdentity{margin-top:6px;font-size:14px}
+.officerPost{margin-top:4px;font-size:11px;font-weight:normal;color:#475569}
 .divider{display:flex;align-items:center;margin:22px 0;color:#9ca3af;font-size:12px;font-weight:bold}
 .divider::before,.divider::after{content:"";flex:1;height:1px;background:#e5e7eb}
 .divider span{padding:0 12px}
@@ -44,6 +46,9 @@ button:disabled{opacity:.55}
 .walkInBox{background:#fff7ed;border-color:#fed7aa}
 .walkInNote{font-size:12px;color:#9a3412;line-height:1.45;margin-bottom:12px}
 .walkInButton{background:#c2410c;color:white}
+.incidentBox{background:#fef2f2;border-color:#fecaca}
+.incidentNote{font-size:12px;color:#991b1b;line-height:1.45;margin-bottom:12px}
+.incidentButton{background:#991B1B;color:white}
 .logout{display:block;text-align:center;margin-top:16px;color:#991b1b;text-decoration:none;font-size:13px;font-weight:bold}
 .footer{text-align:center;color:#9ca3af;font-size:11px;margin:15px 0 25px}
 </style>
@@ -51,8 +56,7 @@ button:disabled{opacity:.55}
 <body>
 <div class="header">
   <h1>ONE49 Security Portal</h1>
-  <p>Visitor & Service Access Verification</p>
-  <div class="version">Security Portal V3.3 — Walk-In Registration</div>
+  <div class="version">Version 3.6</div>
 </div>
 
 <div class="container">
@@ -65,7 +69,7 @@ button:disabled{opacity:.55}
       <input type="hidden" name="action" value="login">
 
       <label>Officer ID</label>
-      <input type="text" name="officerId" placeholder="SEC001" autocomplete="username" required>
+      <input type="text" name="officerId" placeholder="Enter Officer ID" autocomplete="username" required>
 
       <label>PIN</label>
       <input type="password" name="pin" inputmode="numeric" pattern="[0-9]*" maxlength="6" placeholder="6-digit PIN" autocomplete="current-password" required>
@@ -82,19 +86,10 @@ button:disabled{opacity:.55}
   </div>
 
   <div id="scannerCard" class="card hidden">
-    <div class="officer">✓ Security Officer Authenticated</div>
-
-    <div class="box walkInBox" style="margin-bottom:18px">
-      <div class="boxTitle">🚶 Walk-In Registration</div>
-      <div class="walkInNote">
-        Use this when the resident did not complete pre-registration. Security must contact a VERIFIED resident using the registered mobile number and receive approval before entry.
-      </div>
-
-      <form id="walkInForm" method="POST">
-        <input type="hidden" name="action" value="walkInStart">
-        <input id="walkInSession" type="hidden" name="session">
-        <button class="walkInButton" type="submit">Start Walk-In Registration</button>
-      </form>
+    <div class="officer">
+      <div>✓ Security Officer Authenticated</div>
+      <div class="officerIdentity">Officer ID: <span id="officerIdDisplay">-</span></div>
+      <div class="officerPost" id="guardPostDisplay">-</div>
     </div>
 
     <div class="title">Visitor Verification</div>
@@ -123,6 +118,22 @@ button:disabled{opacity:.55}
         <button class="secondary" type="submit">🔎 Search Registration</button>
       </form>
     </div>
+
+    <div class="divider"><span>WALK-IN</span></div>
+
+    <div class="box walkInBox" style="margin-bottom:18px">
+      <div class="boxTitle">🚶 Walk-In Registration</div>
+      <div class="walkInNote">
+        Use this when the resident did not complete pre-registration. Security must contact a VERIFIED resident using the registered mobile number and receive approval before entry.
+      </div>
+
+      <form id="walkInForm" method="POST">
+        <input type="hidden" name="action" value="walkInStart">
+        <input id="walkInSession" type="hidden" name="session">
+        <button class="walkInButton" type="submit">Start Walk-In Registration</button>
+      </form>
+    </div>
+
 
     <div class="divider"><span>EXIT</span></div>
 
@@ -164,6 +175,21 @@ button:disabled{opacity:.55}
       </form>
     </div>
 
+    <div class="divider"><span>SECURITY</span></div>
+
+    <div class="box incidentBox">
+      <div class="boxTitle">⚠️ Security Incident Report</div>
+      <div class="incidentNote">
+        Record suspicious activity, unauthorized access attempts, disputes, theft, damage, lost passes, emergencies or other security incidents.
+      </div>
+
+      <form id="incidentForm" method="POST">
+        <input type="hidden" name="action" value="incidentStart">
+        <input id="incidentSession" type="hidden" name="session">
+        <button class="incidentButton" type="submit">⚠ Report Security Incident</button>
+      </form>
+    </div>
+
     <a id="logoutButton" class="logout" href="#">Log Out</a>
   </div>
 
@@ -183,14 +209,20 @@ const session = String(params.get('session') || '').trim();
 const loginCard = document.getElementById('loginCard');
 const scannerCard = document.getElementById('scannerCard');
 const loginForm = document.getElementById('loginForm');
+const loginOfficerId = loginForm.querySelector('input[name="officerId"]');
+const loginGuardPost = loginForm.querySelector('select[name="guardPost"]');
+const officerIdDisplay = document.getElementById('officerIdDisplay');
+const guardPostDisplay = document.getElementById('guardPostDisplay');
 const manualForm = document.getElementById('manualForm');
 const walkInForm = document.getElementById('walkInForm');
 const motorcycleForm = document.getElementById('motorcycleForm');
 const passReturnForm = document.getElementById('passReturnForm');
+const incidentForm = document.getElementById('incidentForm');
 const manualSession = document.getElementById('manualSession');
 const walkInSession = document.getElementById('walkInSession');
 const motorcycleSession = document.getElementById('motorcycleSession');
 const passReturnSession = document.getElementById('passReturnSession');
+const incidentSession = document.getElementById('incidentSession');
 const registrationId = document.getElementById('registrationId');
 const motorcyclePlate = document.getElementById('motorcyclePlate');
 const passSerial = document.getElementById('passSerial');
@@ -200,11 +232,45 @@ const reader = document.getElementById('reader');
 const statusBox = document.getElementById('status');
 const logoutButton = document.getElementById('logoutButton');
 
+const officerIdFromUrl = String(params.get('officerId') || '').trim().toUpperCase();
+const guardPostFromUrl = String(params.get('guardPost') || '').trim();
+
+const savedOfficerId = String(sessionStorage.getItem('one49OfficerId') || '').trim().toUpperCase();
+const savedGuardPost = String(sessionStorage.getItem('one49GuardPost') || '').trim();
+
+const activeOfficerId = officerIdFromUrl || savedOfficerId;
+const activeGuardPost = guardPostFromUrl || savedGuardPost;
+
+if (activeOfficerId) {
+  officerIdDisplay.textContent = activeOfficerId;
+}
+
+if (activeGuardPost) {
+  guardPostDisplay.textContent = activeGuardPost;
+}
+
+loginForm.addEventListener('submit', function() {
+  const officerId = String(loginOfficerId.value || '')
+    .trim()
+    .toUpperCase();
+
+  const guardPost = String(loginGuardPost.value || '').trim();
+
+  if (officerId) {
+    sessionStorage.setItem('one49OfficerId', officerId);
+  }
+
+  if (guardPost) {
+    sessionStorage.setItem('one49GuardPost', guardPost);
+  }
+});
+
 loginForm.action = ONE49_BACKEND_URL;
 manualForm.action = ONE49_BACKEND_URL;
 walkInForm.action = ONE49_BACKEND_URL;
 motorcycleForm.action = ONE49_BACKEND_URL;
 passReturnForm.action = ONE49_BACKEND_URL;
+incidentForm.action = ONE49_BACKEND_URL;
 
 if (session) {
   scannerCard.classList.remove('hidden');
@@ -212,12 +278,16 @@ if (session) {
   walkInSession.value = session;
   motorcycleSession.value = session;
   passReturnSession.value = session;
+  incidentSession.value = session;
 } else {
   loginCard.classList.remove('hidden');
 }
 
 logoutButton.addEventListener('click', function(event) {
   event.preventDefault();
+
+  sessionStorage.removeItem('one49OfficerId');
+  sessionStorage.removeItem('one49GuardPost');
 
   const form = document.createElement('form');
   form.method = 'POST';
